@@ -1,6 +1,6 @@
 @extends('layouts.frontendLayout')
 @section('title')
-    Login
+Login    Login
 @endsection
 @section('content')
 

@@ -78,10 +78,10 @@
                     <div class="nav col-lg-8">
                         <ul class="d-flex">
                             <li>
-                                <a href="#" class="active">Home</a>
+                                <a href="{{ route('frontend.home') }}" class="active">Home</a>
                             </li>
                             <li>
-                                <a href="./shop.html">Shop</a>
+                                <a href="{{ route('frontend.shop') }}">Shop</a>
                             </li>
                             <li>
                                 <a href="#">Pages</a>

@@ -1,7 +1,7 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-ecobazar-sidebar">
     <div class="app-brand demo">
         <a href="index.html" class="app-brand-link">
-          <img src="{{ asset('frontend/img/Logo.png') }}" alt="">
+          <img src="{{ asset('frontend/img/Logo.png') }}" alt="Ecobazar Logo" style="max-height: 40px;">
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -265,8 +265,7 @@
         </li>
 
         <!-- Forms & Tables -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp;
-                Tables</span></li>
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
         <!-- Forms -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -314,18 +313,49 @@
         <!-- Misc -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
         <li class="menu-item">
-            <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
-                class="menu-link">
+            <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-support"></i>
                 <div data-i18n="Support">Support</div>
             </a>
         </li>
         <li class="menu-item">
-            <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/" target="_blank"
-                class="menu-link">
+            <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/" target="_blank" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation">Documentation</div>
             </a>
         </li>
     </ul>
 </aside>
+
+
+<style>
+    .bg-ecobazar-sidebar {
+        background-color: #ffffff !important; 
+        border-right: 1px solid #e6e6e6;
+    }
+    .bg-ecobazar-sidebar .menu-header-text {
+        color: #999999 !important; 
+    }
+    .bg-ecobazar-sidebar .menu-link {
+        color: #4d4d4d !important; 
+    }
+    .bg-ecobazar-sidebar .menu-link i {
+        color: #666666 !important;
+    }
+   
+    .bg-ecobazar-sidebar .menu-item.active > .menu-link {
+        background-color: #2C742F !important; 
+        color: #ffffff !important;
+    }
+    .bg-ecobazar-sidebar .menu-item.active > .menu-link i {
+        color: #ffffff !important;
+    }
+   
+    .bg-ecobazar-sidebar .menu-item:not(.active) > .menu-link:hover {
+        background-color: #f2f8f2 !important; 
+        color: #2C742F !important;
+    }
+    .bg-ecobazar-sidebar .menu-item:not(.active) > .menu-link:hover i {
+        color: #2C742F !important;
+    }
+</style>

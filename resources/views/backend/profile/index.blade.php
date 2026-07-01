@@ -114,7 +114,7 @@
                             <div class="row align-items-center">
                                 <label for="email" class="col-sm-3 col-form-label fw-bold text-dark" style="font-size: 0.88rem;">Email Address</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control border fw-medium px-3 text-muted" id="email" name="email" readonly value="{{ auth()->user()->email }}" style="height: 46px; border-color: #e4e7eb !important; border-radius: 6px; background-color: #ffffff;">
+                                    <input type="email" class="form-control border fw-medium px-3" id="email" name="email" readonly value="{{ auth()->user()->email }}" style="height: 46px; border-color: #e4e7eb !important; border-radius: 6px; background-color: #ffffff;">
                                     <div class="invalid-feedback fw-bold">Please provide a valid email address.</div>
                                 </div>
                             </div>
@@ -216,5 +216,23 @@
 <!-- Extra CSS links inside push if needed for Bootstrap Icons styling -->
 @push('css')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+@endpush
+
+@push('js')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const password = document.getElementById('password');
+        const passwordConfirm = document.getElementById('password_confirm');
+        const passwordError = document.getElementById('passwordError');
+
+        if(passwordConfirm && password) {
+            passwordConfirm.addEventListener('input', function() {
+                if (password.value === passwordConfirm.value) {
+                    passwordError.classList.add('d-none');
+                }
+            });
+        }
+    });
+</script>
 @endpush
 @endsection

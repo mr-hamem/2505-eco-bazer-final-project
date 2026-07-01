@@ -90,10 +90,10 @@
                                 <a href="#">Blog</a>
                             </li>
                             <li>
-                                <a href="#">About Us</a>
+                                <a href="{{ route('frontend.about') }}"href="#">About Us</a>
                             </li>
                             <li>
-                                <a href="./contact.html">Contact Us</a>
+                                <a href="{{ route('frontend.contact') }}">Contact Us</a>
                             </li>
                         </ul>
                     </div>

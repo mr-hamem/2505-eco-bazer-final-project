@@ -14,7 +14,7 @@ Shop
                 <li><a href="#"> Vagetable</a></li>
             </ul>
             <div class="shopBannertxt">
-            <a href="#"><img src="./img/Discount Bannar.png" class="img-fluid" alt="">
+            <a href="#"><img src="{{asset('frontend/img/Discount Bannar.png')}}" class="img-fluid" alt="">
             <p>Best Deals</p>
             <h2>Sale of the Month</h2>
             <div class="cot_sale_timer" id="cot_sale_timer">
@@ -268,10 +268,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
@@ -291,10 +291,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
@@ -314,10 +314,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
@@ -337,10 +337,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
@@ -366,10 +366,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
@@ -389,10 +389,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
@@ -412,10 +412,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
@@ -435,10 +435,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
@@ -464,10 +464,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
@@ -487,10 +487,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
@@ -510,10 +510,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
@@ -533,10 +533,10 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="./img/AppleBig.png" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
-                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="./img/AppleBig.png" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
+                            <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">

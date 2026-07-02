@@ -84,7 +84,7 @@
                                 <a href="{{ route('frontend.shop') }}">Shop</a>
                             </li>
                             <li>
-                                <a href="#">Pages</a>
+                                <a href="{{ route('frontend.error-page') }}">Pages</a>
                             </li>
                             <li>
                                 <a href="{{ route('frontend.blog') }}">Blog</a>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\aboutController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\contactController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomepageController;
@@ -14,6 +15,7 @@ Route::get('/home', [HomepageController::class, 'home'])->name('frontend.home');
 Route::get('/shop', [ShopController::class, 'shop'])->name('frontend.shop');  
 Route::get('/contact', [contactController::class, 'contact'])->name('frontend.contact');
 Route::get('/about', [aboutController::class, 'about'])->name('frontend.about');
+Route::get('/blog', [BlogController::class, 'blog'])->name('frontend.blog');
   
 
 // Admin Login Routes

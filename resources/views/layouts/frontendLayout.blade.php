@@ -87,7 +87,7 @@
                                 <a href="#">Pages</a>
                             </li>
                             <li>
-                                <a href="#">Blog</a>
+                                <a href="{{ route('frontend.blog') }}">Blog</a>
                             </li>
                             <li>
                                 <a href="{{ route('frontend.about') }}"href="#">About Us</a>

@@ -14,12 +14,17 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard (Active State matching the 'Shop now' button green) -->
         <li class="menu-item active">
-            <a href="index.html" class="menu-link" style="background-color: #00b207 !important; color: #ffffff !important; font-weight: 500;">
-                <i class="menu-icon tf-icons bx bx-home-circle" style="color: #ffffff !important;"></i>
+            <a href="{{ route('admin.dashboard') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-
+        <li class="menu-item">
+            <a href="{{ route('admin.product.show', ['id' => 1]) }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Single Product</div>
+            </a>
+        </li>
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle" style="color: #1a1a1a; font-weight: 400;">

@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class FrontendController extends Controller
+class HomepageController extends Controller
 {
-    function homepage() {
+    function home() {
         return view('frontend.home');
     }
-
-   
 }

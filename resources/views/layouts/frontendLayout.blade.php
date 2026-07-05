@@ -78,22 +78,22 @@
                     <div class="nav col-lg-8">
                         <ul class="d-flex">
                             <li>
-                                <a href="#" class="active">Home</a>
+                                <a href="{{ route('frontend.home') }}" class="active">Home</a>
                             </li>
                             <li>
-                                <a href="./shop.html">Shop</a>
+                                <a href="{{ route('frontend.shop') }}">Shop</a>
                             </li>
                             <li>
-                                <a href="#">Pages</a>
+                                <a href="{{ route('frontend.error-page') }}">Pages</a>
                             </li>
                             <li>
-                                <a href="#">Blog</a>
+                                <a href="{{ route('frontend.blog') }}">Blog</a>
                             </li>
                             <li>
-                                <a href="#">About Us</a>
+                                <a href="{{ route('frontend.about') }}"href="#">About Us</a>
                             </li>
                             <li>
-                                <a href="./contact.html">Contact Us</a>
+                                <a href="{{ route('frontend.contact') }}">Contact Us</a>
                             </li>
                         </ul>
                     </div>

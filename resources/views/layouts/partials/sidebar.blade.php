@@ -13,16 +13,22 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard (Active State matching the 'Shop now' button green) -->
-        <li class="menu-item active">
+        <li class="menu-item {{ activeLink('admin.dashboard')  }}">
             <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="{{ route('admin.product.show', ['id' => 1]) }}" class="menu-link">
+        <li class="menu-item {{ activeLink('admin.category.index')  }}">
+            <a href="{{ route('admin.category.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Single Product</div>
+                <div data-i18n="Analytics">Category</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('admin.product.show') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Products</div>
             </a>
         </li>
         <!-- Layouts -->

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class AdminProfileController extends Controller
 {
@@ -44,5 +45,27 @@ class AdminProfileController extends Controller
             'profile_img' => $fileName,
         ]);
         return back();
+    }
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required|string',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if (!Hash::check($request->old_password, auth()->user()->password)) {
+
+        return back()->withErrors([
+            'old_password' => 'Current password is incorrect.'
+        ]);
+    }
+
+        $user = auth()->user();
+
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        return back()->with('success', 'Password updated successfully.');
     }
 }

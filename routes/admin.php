@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SingleProductController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,5 @@ Route::prefix('/category')->name('category.')->controller(CategoryController::cl
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
 });
+Route::get('/customers', [CustomerController::class, 'show'])->name('customers.show');
 

@@ -25,3 +25,7 @@ Route::prefix('/category')->name('category.')->controller(CategoryController::cl
     Route::post('/store', 'store')->name('store');
 });
 
+//Password Update
+Route::patch('/change-password', [AdminProfileController::class, 'changePassword'])->name('change.password');
+Route::patch('/update-password', [AdminProfileController::class, 'updatePassword'])->name('update.password');
+

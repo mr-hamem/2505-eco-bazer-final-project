@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SingleProductController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,12 @@ Route::prefix('/category')->name('category.')->controller(CategoryController::cl
     Route::get('/', 'showCategories')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::delete('/destroy/{id}', 'destroy')->name('destroy');
 });
+Route::get('/customers', [CustomerController::class, 'show'])->name('customers.show');
+
+//Password Update
+Route::patch('/change-password', [AdminProfileController::class, 'changePassword'])->name('change.password');
+Route::patch('/update-password', [AdminProfileController::class, 'updatePassword'])->name('update.password');
 

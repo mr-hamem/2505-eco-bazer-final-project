@@ -11,9 +11,9 @@
     <title>@yield('title') - EcoBazer</title>
 
     <meta name="description" content="" />
-
+  
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('frontend/img/Logo.png')}}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('frontend/img/plant 1.png')}}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,7 +21,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/fonts/boxicons.css') }}" />
 
@@ -45,6 +45,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('backend/assets/js/config.js') }}"></script>
+      @notifyCss
     @stack('css')
 </head>
 
@@ -60,7 +61,7 @@
             <div class="layout-page">
                 <!-- Navbar -->
 
-                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                <nav style="z-index:20;" class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
                     id="layout-navbar">
                     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
                         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
@@ -150,6 +151,8 @@
                 <div class="content-wrapper">
                     {{-- Main Content --}}
                     <main>
+                         <x-notify::notify />
+
                         @yield('content')
                     </main>
                     {{-- Main Content end --}}
@@ -207,6 +210,7 @@
     <script src="{{ asset('backend/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <script src="{{ asset('backend/assets/js/main.js') }}"></script>
     <script src="{{ asset('backend/assets/js/dashboards-analytics.js') }}"></script>
+      @notifyJs
     @stack('js')
 </body>
 

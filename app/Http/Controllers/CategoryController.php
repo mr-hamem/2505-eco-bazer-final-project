@@ -7,8 +7,19 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    function showCategories(){
-        return view('backend.category.index');
+    function showCategories(Request $request){
+        $query = Category::query();
+         if($request->search){
+            $query->whereLike('title', "%$request->search%");
+         }
+
+         if($request->status){
+            $query->where('status',$request->status);
+         }
+
+        $categories = $query->get();
+        // dd($request->all());
+        return view('backend.category.index', compact('categories'));
     }
 
     function create(){
@@ -31,8 +42,11 @@ class CategoryController extends Controller
             'img' => $request->img,
             'details' => $request->details,
         ]);
-
-
+    notify()
+    ->success()
+    ->title('Category has been created successfully')
+    ->send();
+    return redirect()->route('admin.category.index');
 
     }
 }

@@ -24,15 +24,16 @@ Route::get('/blog', [BlogController::class, 'blog'])->name('frontend.blog');
 Route::get('/pages', [PagesController::class, 'error'])->name('frontend.error-page');
 Route::get('/admin/settings', [SettingController::class,'index'])
     ->name('admin.settings');
+    
 
-    Route::get('/admin/analytics',[AnalyticsController::class,'index'])->name('admin.analytics');
+
+
+Route::get('/admin/analytics',[AnalyticsController::class,'index'])->name('admin.analytics');
 
 Route::get('/admin/reports',[ReportController::class,'index'])->name('admin.reports');
   
 
 // Admin Login Routes
 Auth::routes();
-
-
 
 

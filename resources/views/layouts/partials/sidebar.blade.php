@@ -25,8 +25,8 @@
                 <div data-i18n="Analytics">Category</div>
             </a>
         </li>
-        <li class="menu-item {{ activeLink('admin.product.show')  }}">
-            <a href="{{ route('admin.product.show') }}" class="menu-link">
+        <li class="menu-item {{ activeLink('admin.product.index')  }}">
+            <a href="{{ route('admin.product.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Products</div>
             </a>

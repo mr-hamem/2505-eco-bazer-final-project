@@ -10,11 +10,9 @@
             <span class="badge bg-label-success rounded-pill px-3 py-2 fw-semibold">In Stock</span>
         </div>
 
-        {{-- ফর্ম অ্যাকশন ও মেথড শুধু প্লেসহোল্ডার — আপনি নিজের রাউট বসাবেন --}}
-        <form action="{{ route('admin.product.show', ['id' => 1]) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+        
+        <form action="{{ route('admin.product.index', ['id' => 1]) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf
-            {{-- @method('PUT') প্রয়োজনে --}}
-
             <div class="row g-4">
 
                 <div class="col-md-6">

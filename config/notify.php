@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Mckenziearts\Notify\Enums\NotificationModel;
-use Mckenziearts\Notify\Enums\NotificationType;
 
 return [
 
@@ -46,15 +45,11 @@ return [
 
     'preset-messages' => [
         'success' => [
-            'type' => NotificationType::Success,
-            'model' => NotificationModel::Toast,
             'title' => 'Success',
             'message' => 'The action has been successfully.',
             'duration' => 3000,
         ],
         'error' => [
-            'type' => NotificationType::Error,
-            'model' => NotificationModel::Toast,
             'title' => 'Error',
             'message' => 'An error occurred.',
             'duration' => 5000,

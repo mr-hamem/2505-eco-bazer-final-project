@@ -24,6 +24,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('origin')->nullable();
             $table->string('sku')->nullable();
+            $table->date('expiry_date')->nullable();
             $table->enum('units', ['KG', 'PEICE', 'GRAM', 'LITRE'])->default('GRAM'); 
             // $table->string('units')->default('GRAM')->comment("'KG', 'PEICE', 'GRAM', 'LITRE'");
             $table->timestamps();

@@ -42,10 +42,7 @@ class CategoryController extends Controller
             'img' => $request->img,
             'details' => $request->details,
         ]);
-    notify()
-    ->success()
-    ->title('Category has been created successfully')
-    ->send();
+    
     return redirect()->route('admin.category.index');
 
     }

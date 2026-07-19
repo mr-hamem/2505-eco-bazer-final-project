@@ -57,7 +57,9 @@
                         <option value="{{ $category->id }}">{{ $category->title }}</option>
                         @endforeach
                     </select>
-                    <div class="text-danger">Please select a category.</div>
+                    @error('category_id')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="col-md-6">
@@ -182,7 +184,7 @@
                             <div class="border rounded p-1 bg-white opacity-50"><img
                                     src="https://via.placeholder.com/50" alt="thumb" class="img-fluid rounded"></div>
                         </div>
-                        <div class="main-preview-box border rounded p-2 bg-white flex-grow-1 text-center"
+                        <div class="main-preview-box border rounded p-2 bg-white grow text-center"
                             style="max-width: 250px;">
                             <img src="https://via.placeholder.com/200" alt="Chinese Cabbage Main Image"
                                 class="img-fluid rounded">

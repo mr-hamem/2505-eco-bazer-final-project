@@ -14,7 +14,7 @@
 @endpush
 
 @section('content')
-<div class="container-xxl grow container-p-y">
+<div class="container-xxl flex-grow-1 container-p-y">
     <div class="card form-container p-4 shadow-sm border-0">
         <div class="card-header d-flex justify-content-between align-items-center bg-transparent border-bottom-0 ps-0">
             <h4 class="fw-bold mb-0 text-success"><i class="bx bx-leaf me-2"></i>Product Details</h4>

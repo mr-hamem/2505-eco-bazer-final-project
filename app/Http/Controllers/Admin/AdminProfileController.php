@@ -49,22 +49,20 @@ class AdminProfileController extends Controller
     public function updatePassword(Request $request)
     {
         $request->validate([
-            'old_password' => 'required|string',
+            'old_password' => 'required|string|current_password',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        if (!Hash::check($request->old_password, auth()->user()->password)) {
-
-        return back()->withErrors([
-            'old_password' => 'Current password is incorrect.'
-        ]);
-    }
 
         $user = auth()->user();
 
         $user->password = Hash::make($request->password);
 
         $user->save();
+        notify()
+        ->success()
+        ->title('⚡️ Laravel Notify is awesome!')
+        ->send();
 
         return back()->with('success', 'Password updated successfully.');
     }

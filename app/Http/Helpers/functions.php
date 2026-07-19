@@ -10,3 +10,8 @@ function activeLink($route, $activeClass = 'active')
 {
     return request()->routeIs($route) ? $activeClass : '';
 }
+
+
+function getImage($image = null){
+    return $image ? asset('storage/' . $image) : asset('placeholder.png');
+}

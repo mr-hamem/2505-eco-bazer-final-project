@@ -26,6 +26,9 @@ return new class extends Migration
             $table->string('sku')->nullable();
             $table->date('expiry_date')->nullable();
             $table->enum('units', ['KG', 'PEICE', 'GRAM', 'LITRE'])->default('GRAM'); 
+            $table->boolean('featured')->default(false);
+            $table->boolean('status')->default(true);
+            $table->softDeletes();
             // $table->string('units')->default('GRAM')->comment("'KG', 'PEICE', 'GRAM', 'LITRE'");
             $table->timestamps();
         });

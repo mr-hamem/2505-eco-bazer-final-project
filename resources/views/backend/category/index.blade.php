@@ -2,131 +2,180 @@
 
 @section('title', 'Category')
 @section('content')
-    
-    <div class="container">
-        <div class="row my-4">
-            <div class="col-lg-3">
-                <div class="card">
-                    <div class="card-header">
-                        Total Categories
-                    </div>
-                    <div class="card-body">
-                        <h1>{{ $categories->count() }}</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card">
-                    <div class="card-header">
-                        Total Products
-                    </div>
-                    <div class="card-body">
-                        <h1>0</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card">
-                    <div class="card-header">
-                       Best Categories
-                    </div>
-                    <div class="card-body">
-                        <h1>0</h1>
+@push('css')
+<link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/assets/css/responsive.css') }}">
+@endpush
+
+<div class="container-fluid px-4 py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4 page-header">
+        <div>
+            <h3 class="page-title mb-1">Categories</h3>
+            <p class="page-subtitle mb-0">Organize your products into categories</p>
+        </div>
+        <a href="{{ route('admin.category.create') }}" class="btn btn-brand px-3 py-2 add-category-btn">
+            <i class='bx bx-plus'></i> Add Category
+        </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-lg-3">
+            <div class="card stat-card h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="stat-icon"><i class='bx bx-category'></i></div>
+                    <div>
+                        <div class="stat-label">Total Categories</div>
+                        <div class="stat-value">{{ $categories->count() }}</div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <div class="card">
-                    <div class="card-header">
-                        Inactive Categories
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="card stat-card h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="stat-icon"><i class='bx bx-package'></i></div>
+                    <div>
+                        <div class="stat-label">Total Products</div>
+                        <div class="stat-value">0</div>
                     </div>
-                    <div class="card-body">
-                        <h1>{{ $categories->where('status', 0)->count() }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="card stat-card h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="stat-icon"><i class='bx bx-trophy'></i></div>
+                    <div>
+                        <div class="stat-label">Best Categories</div>
+                        <div class="stat-value">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="card stat-card h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="stat-icon"><i class='bx bx-x-circle'></i></div>
+                    <div>
+                        <div class="stat-label">Inactive Categories</div>
+                        <div class="stat-value">{{ $categories->where('status', 0)->count() }}</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row justify-content-between align-items-end">
-            <div class="col-lg-8">
-            <form action="{{ route('admin.category.index') }}">
-                <div class="d-flex gap-2 align-items-center">
-                    <div class="form-group">
-                        <label for="">Search Category</label>
-                        <input name="search" value="{{ request()->search ?? '' }}" type="text" class="form-control">
+    <!-- Filters -->
+    <div class="card filter-card mb-4">
+        <div class="card-body p-3">
+            <form action="{{ route('admin.category.index') }}" class="row g-3 align-items-end">
+                <div class="col-12 col-md-5">
+                    <label class="form-label">Search Category</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0"><i class='bx bx-search'></i></span>
+                        <input name="search" value="{{ request()->search ?? '' }}" type="text"
+                            class="form-control border-start-0 ps-0" placeholder="Search by name...">
                     </div>
-                    <div class="form-group">
-                        <label for="">Status</label>
-                        <select name="status" class="form-control">
-                            <option {{ request()->status == 1 ? 'selected' : '' }} value="1">Active</option>
-                            <option {{ request()->status == 0 ? 'selected' : '' }} value="0">Inactive</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" class="" name="empty_category" value="{{ true }}">
-                        <label for="">Empty Category</label>
-                    </div>
-                    <button class="btn btn-sm btn-success"> Filter</button>
                 </div>
-                
+                <div class="col-6 col-md-2">
+                    <label class="form-label">Status</label>
+                    <select name="status" class="form-select">
+                        <option value="">All Status</option>
+                        <option {{ request()->status == 1 ? 'selected' : '' }} value="1">Active</option>
+                        <option {{ request()->status == 0 ? 'selected' : '' }} value="0">Inactive</option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-3">
+                    <label class="form-label">&nbsp;</label>
+                    <div class="empty-check">
+                        <input type="checkbox" class="form-check-input" id="empty_category" name="empty_category"
+                            value="{{ true }}">
+                        <label for="empty_category">Empty Category</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 d-flex gap-2">
+                    <button type="submit" class="btn btn-brand w-100">
+                        <i class='bx bx-filter-alt'></i> Filter
+                    </button>
+                </div>
             </form>
-            </div>
-            <div class="col-lg-2"><a href="{{ route('admin.category.create') }}" class="btn btn-primary">+ Add Category</a></div>
         </div>
-
-
     </div>
 
-    <div class="container">
-        <table class="table table-responsive table-striped table-hover">
-            <thead>
-                <tr>
-                    <td>Sl</td>
-                    <td>Category</td>
-                    <td>Total Products</td>
-                    <td>Description</td>
-                    <td>Featured</td>
-                    <td>Status</td>
-                    <td>Action</td>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($categories as $key => $category)
+    <!-- Table -->
+    <div class="card category-card">
+        <div class="table-responsive">
+            <table class="table table-categories mb-0">
+                <thead>
+                    <tr>
+                        <th>Sl</th>
+                        <th>Category</th>
+                        <th>Total Products</th>
+                        <th>Description</th>
+                        <th class="text-center">Featured</th>
+                        <th>Status</th>
+                        <th class="text-end">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($categories as $key => $category)
                     <tr>
                         <td>{{ ++$key }}</td>
-                        <td>{{ $category->title }}</td>
+                        <td><span class="category-title">{{ $category->title }}</span></td>
                         <td>0</td>
-                        <td>{{ strlen($category->details) == 0 ? '---' : (strlen($category->details) > 25 ? substr($category->details, 0, 25) . '...' : $category->details) }}</td>
                         <td>
+                            <span class="category-desc">
+                                {{ strlen($category->details) == 0 ? '---' : (strlen($category->details) > 25 ? substr($category->details, 0, 25) . '...' : $category->details) }}
+                            </span>
+                        </td>
+                        <td class="text-center">
                             @if ($category->featured)
-                                <span class="badge bg-success">Yes</span>
+                            <span class="badge-pill badge-yes">Yes</span>
                             @else
-                                <span class="badge bg-danger">No</span>
+                            <span class="badge-pill badge-no">No</span>
                             @endif
                         </td>
                         <td>
                             @if ($category->status)
-                                <span class="badge bg-success">Active</span>
+                            <span class="badge-pill badge-active">Active</span>
                             @else
-                                <span class="badge bg-danger">Inactive</span>
+                            <span class="badge-pill badge-inactive">Inactive</span>
                             @endif
                         </td>
-                        <td>
-                            <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                            <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST" style="display: inline;">
+                        <td class="text-end">
+                            <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-edit">
+                                <i class='bx bx-edit-alt'></i> Edit
+                            </a>
+                            <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST"
+                                class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure?')">
+                                    <i class='bx bx-trash-alt'></i> Delete
+                                </button>
                             </form>
                         </td>
                     </tr>
-                @empty
-                    
-                @endforelse
-            </tbody>
-        </table>
+                    @empty
+                    <tr>
+                        <td colspan="7">
+                            <div class="empty-state text-center">
+                                <i class='bx bx-category d-block mb-2'></i>
+                                <p class="mb-3 text-muted">No categories were found</p>
+                                <a href="{{ route('admin.category.create') }}" class="btn btn-brand btn-sm px-3">
+                                    Create your first category
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
+
+</div>
 
 @endsection

@@ -32,9 +32,9 @@ Route::prefix('/category')->name('category.')->controller(CategoryController::cl
 // Admin Product 
 Route::prefix('/product')->name('product.')->controller(ProductController::class)->group(function(){
     Route::get('/', 'index')->name('index');
-    Route::get('/create', 'create')->name('create');
+    Route::get('/create', 'editOrCreate')->name('create');
     Route::post('/store', 'store')->name('store');
-    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::get('/edit/{id}', 'editOrCreate')->name('edit');
     Route::put('/update/{id}', 'update')->name('update');
     Route::delete('/destroy/{id}', 'destroy')->name('destroy');
 });

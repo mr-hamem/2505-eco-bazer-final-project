@@ -131,7 +131,7 @@
                                 <a href="#" class="product-title">{{ $product->title }}</a>
                             </div>
                         </td>
-                        <td>{{ $product->category_id }}</td>
+                        <td>{{ $product->category->title }}</td>
                         <td>
                             @if ($product->selling_price && $product->selling_price > 0)
                             <p class="price-current">{{ number_format($product->selling_price, 2) }} {{ env('DEFAULT_CURRENCY') . "/ $product->units" }}</p>
@@ -164,7 +164,7 @@
                             @endif
                         </td>
                         <td class="text-end">
-                            <a href="#" class="icon-btn" title="Edit"><i class='bx bx-edit-alt'></i></a>
+                            <a href="{{ route('admin.product.edit', $product->id) }}" class="icon-btn" title="Edit"><i class='bx bx-edit-alt'></i></a>
                             <form action="{{ route('admin.product.destroy', $product->id) }}" method="POST"
                                 class="d-inline">
                                 @csrf

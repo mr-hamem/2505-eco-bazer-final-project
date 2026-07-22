@@ -14,4 +14,10 @@ class Category extends Model
         "featured",
         "status",
     ];
+
+    function products(){
+        return $this->hasMany(Product::class);
+    }
+
+
 }

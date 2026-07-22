@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\Constant;
 use App\Http\Requests\ProductStoreReq;
 use App\Models\Category;
 use App\Models\Product;
@@ -17,19 +18,23 @@ class ProductController extends Controller
 
     function index()
     {
-        $products  = Product::select('id', 'title', 'category_id', 'image','units', 'featured', 'stock','price','selling_price')->get();
-        // dd($products);
+        $products  = Product::with('category:id,title')->select('id', 'title', 'category_id', 'image', 'units', 'featured', 'stock', 'price', 'selling_price')->get();
+
         return view('backend.product.index', compact('products'));
     }
 
-
-    function create()
+    function editOrCreate($id = null)
     {
         $categories = Category::where('status', true)->select('id', 'title')->get();
-
-        return view('backend.product.create', compact('categories'));
+        if ($id) {
+            $product = Product::findOrFail($id);
+            $units = Constant::UNIT_TYPE;
+            
+            return view('backend.product.edit', compact('categories','product', 'units'));
+        } else {
+            return view('backend.product.create', compact('categories'));
+        }
     }
-
 
 
     function store(ProductStoreReq $request)
@@ -47,13 +52,14 @@ class ProductController extends Controller
             Log::error("Product Store Issue", $e->getMessage());
             return to_route('admin.product.index');
         }
-
-        
     }
 
 
-    function destroy($id){
-        dd($id);
+    function destroy($id)
+    {
+
+        Product::find($id)->delete();
+        return back();
     }
 
 

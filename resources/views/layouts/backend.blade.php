@@ -11,7 +11,7 @@
     <title>@yield('title') - EcoBazer</title>
 
     <meta name="description" content="" />
-  
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('frontend/img/plant 1.png')}}" />
 
@@ -45,7 +45,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('backend/assets/js/config.js') }}"></script>
-     
+
     @stack('css')
 </head>
 
@@ -84,9 +84,10 @@
                             <!-- Place this tag where you want the button to render. -->
                             <li class="nav-item lh-1 me-3">
                                 <a class="github-button"
-                                    href="https://github.com/themeselection/sneat-html-admin-template-free"
+                                    href="#"
                                     data-icon="octicon-star" data-size="large" data-show-count="true"
-                                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
+                                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">{{
+                                                        str()->headline(auth()->user()->name) }}</a>
                             </li>
 
                             <!-- User -->
@@ -125,7 +126,7 @@
                                             <span class="align-middle">My Profile</span>
                                         </a>
                                     </li>
-                                   
+
                                     <li>
                                         <div class="dropdown-divider"></div>
                                     </li>
@@ -161,27 +162,7 @@
                 <!-- Footer -->
                 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                        <div class="mb-2 mb-md-0">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                            , made with ❤️ by
-                            <a href="https://themeselection.com" target="_blank"
-                                class="footer-link fw-bolder">ThemeSelection</a>
-                        </div>
-                        <div>
-                            <a href="https://themeselection.com/license/" class="footer-link me-4"
-                                target="_blank">License</a>
-                            <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More
-                                Themes</a>
-
-                            <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                                target="_blank" class="footer-link me-4">Documentation</a>
-
-                            <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                                target="_blank" class="footer-link me-4">Support</a>
-                        </div>
+                        	<p class="text-center w-100">Ecobazar eCommerce <span>&copy;</span> 2025. All Rights Reserved</p>
                     </div>
                 </footer>
                 <!-- / Footer -->
@@ -209,7 +190,7 @@
     <script src="{{ asset('backend/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <script src="{{ asset('backend/assets/js/main.js') }}"></script>
     <script src="{{ asset('backend/assets/js/dashboards-analytics.js') }}"></script>
-      
+
     @stack('js')
 </body>
 

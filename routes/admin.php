@@ -37,6 +37,7 @@ Route::prefix('/product')->name('product.')->controller(ProductController::class
     Route::get('/edit/{id}', 'editOrCreate')->name('edit');
     Route::put('/update/{id}', 'update')->name('update');
     Route::delete('/destroy/{id}', 'destroy')->name('destroy');
+    Route::delete('/remove-image/{id}', 'removeImage')->name('remove-image'); // নতুন
 });
 
 

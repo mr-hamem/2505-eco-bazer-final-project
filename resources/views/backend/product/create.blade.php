@@ -202,8 +202,7 @@
                                 <div class="thumb-box"><img src="https://via.placeholder.com/50" alt="thumb"></div>
                             </div>
                             <div class="main-preview-box">
-                                <img src="https://via.placeholder.com/200" alt="Product Main Image"
-                                    class="img-fluid">
+                                <img src="{{ asset('storage/products/' . $product->image) }}" alt="Product Image">
                                 <p class="text-muted small mb-0 mt-2">Current Active Image</p>
                             </div>
                         </div>

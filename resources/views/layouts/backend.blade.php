@@ -13,7 +13,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('backend/assets/img/favicon/favicon.ico')}}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('frontend/img/plant 1.png')}}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,7 +21,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/fonts/boxicons.css') }}" />
 
@@ -38,13 +38,14 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
     <!-- Page CSS -->
-
+     
     <!-- Helpers -->
     <script src="{{ asset('backend/assets/vendor/js/helpers.js') }}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('backend/assets/js/config.js') }}"></script>
+
     @stack('css')
 </head>
 
@@ -60,7 +61,7 @@
             <div class="layout-page">
                 <!-- Navbar -->
 
-                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                <nav style="z-index:20;" class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
                     id="layout-navbar">
                     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
                         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
@@ -83,9 +84,10 @@
                             <!-- Place this tag where you want the button to render. -->
                             <li class="nav-item lh-1 me-3">
                                 <a class="github-button"
-                                    href="https://github.com/themeselection/sneat-html-admin-template-free"
+                                    href="#"
                                     data-icon="octicon-star" data-size="large" data-show-count="true"
-                                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
+                                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">{{
+                                                        str()->headline(auth()->user()->name) }}</a>
                             </li>
 
                             <!-- User -->
@@ -124,7 +126,7 @@
                                             <span class="align-middle">My Profile</span>
                                         </a>
                                     </li>
-                                   
+
                                     <li>
                                         <div class="dropdown-divider"></div>
                                     </li>
@@ -150,6 +152,7 @@
                 <div class="content-wrapper">
                     {{-- Main Content --}}
                     <main>
+
                         @yield('content')
                     </main>
                     {{-- Main Content end --}}
@@ -159,27 +162,7 @@
                 <!-- Footer -->
                 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                        <div class="mb-2 mb-md-0">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                            , made with ❤️ by
-                            <a href="https://themeselection.com" target="_blank"
-                                class="footer-link fw-bolder">ThemeSelection</a>
-                        </div>
-                        <div>
-                            <a href="https://themeselection.com/license/" class="footer-link me-4"
-                                target="_blank">License</a>
-                            <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More
-                                Themes</a>
-
-                            <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                                target="_blank" class="footer-link me-4">Documentation</a>
-
-                            <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                                target="_blank" class="footer-link me-4">Support</a>
-                        </div>
+                        	<p class="text-center w-100">Ecobazar eCommerce <span>&copy;</span> 2025. All Rights Reserved</p>
                     </div>
                 </footer>
                 <!-- / Footer -->
@@ -207,6 +190,7 @@
     <script src="{{ asset('backend/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <script src="{{ asset('backend/assets/js/main.js') }}"></script>
     <script src="{{ asset('backend/assets/js/dashboards-analytics.js') }}"></script>
+
     @stack('js')
 </body>
 

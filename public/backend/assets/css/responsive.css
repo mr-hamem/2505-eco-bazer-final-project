@@ -1,0 +1,242 @@
+ /* ---------- Responsive ---------- */
+    @media (max-width: 991.98px) {
+        .form-container {
+            padding: 1.5rem !important;
+        }
+
+        .form-section {
+            padding: 16px;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .container-xxl {
+            padding-left: .75rem;
+            padding-right: .75rem;
+        }
+
+        .form-container {
+            padding: 1.1rem !important;
+            border-radius: 12px;
+        }
+
+        .page-header-bar {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .page-header-bar h4 {
+            font-size: 1.15rem;
+        }
+
+        .form-section {
+            padding: 14px;
+            margin-bottom: 1rem;
+        }
+
+        .preview-panel {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .thumbnail-gallery {
+            flex-direction: row !important;
+            width: 100% !important;
+            justify-content: center;
+        }
+
+        .action-bar {
+            flex-direction: column;
+        }
+
+        .action-bar .btn {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .form-control,
+        .form-select {
+            font-size: .88rem;
+        }
+
+        .form-section-title {
+            font-size: .78rem;
+        }
+
+        .main-preview-box {
+            max-width: 100%;
+        }
+    }
+    /* ---------- catagory ---------- */
+        @media (max-width: 991.98px) {
+        .container-fluid {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+        }
+
+        .stat-card .stat-icon {
+            width: 46px;
+            height: 46px;
+            font-size: 20px;
+        }
+
+        .stat-card .stat-value {
+            font-size: 1.5rem;
+        }
+
+        .table-categories thead th,
+        .table-categories tbody td {
+            padding: 12px 10px;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .container-fluid {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: 1.25rem;
+        }
+
+        .page-header {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 12px;
+        }
+
+        .page-header .add-category-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 1.4rem;
+        }
+
+        .stat-card .card-body {
+            padding: 14px;
+            gap: .6rem !important;
+        }
+
+        .stat-card .stat-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+
+        .stat-card .stat-label {
+            font-size: .7rem;
+        }
+
+        .stat-card .stat-value {
+            font-size: 1.25rem;
+        }
+
+        .filter-card .card-body {
+            padding: 16px !important;
+        }
+
+        .table-categories {
+            min-width: 680px;
+        }
+
+        .btn-edit,
+        .btn-delete {
+            padding: 6px 10px;
+            font-size: .78rem;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .container-fluid {
+            padding-left: .75rem;
+            padding-right: .75rem;
+        }
+
+        .stat-card .stat-value {
+            font-size: 1.1rem;
+        }
+
+        .empty-state {
+            padding: 40px 12px;
+        }
+
+        .empty-state i {
+            font-size: 36px;
+        }
+    }
+    /* ---------- create category ---------- */
+     /* ---------- Responsive ---------- */
+    @media (max-width: 991.98px) {
+        .split-card .row {
+            min-height: auto;
+        }
+
+        .info-panel {
+            padding: 1.8rem 1.6rem;
+        }
+
+        .form-panel {
+            padding: 1.8rem 1.6rem;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .create-wrap {
+            padding: 0 .5rem;
+        }
+
+        .split-card {
+            border-radius: 14px;
+        }
+
+        .info-panel {
+            padding: 1.6rem 1.4rem;
+            text-align: left;
+        }
+
+        .info-icon {
+            width: 46px;
+            height: 46px;
+            font-size: 22px;
+            margin-bottom: .9rem;
+        }
+
+        .info-panel h4 {
+            font-size: 1.1rem;
+        }
+
+        .info-tips {
+            display: none;
+        }
+
+        .info-footer {
+            margin-top: .8rem;
+        }
+
+        .form-panel {
+            padding: 1.6rem 1.3rem;
+        }
+
+        .toggle-inline-row {
+            gap: 18px;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .form-panel h5 {
+            font-size: 1.05rem;
+        }
+
+        .field-block .form-control,
+        .field-block .form-select {
+            font-size: .9rem;
+        }
+
+        .btn-brand-submit {
+            font-size: .9rem;
+            padding: .75rem 1rem;
+        }
+    }

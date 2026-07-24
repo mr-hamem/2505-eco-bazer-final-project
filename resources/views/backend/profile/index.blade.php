@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title', 'Shop-1')
+@section('title', 'Profile Settings')
 
 @section('content')
 
@@ -12,17 +12,17 @@
                     <h4 class="mb-0 text-white">Update Profile</h4>
                 </div>
                 <div class="card-body py-4">
-                    <form id="profileUpdateForm"  action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
+                    <form id="profileUpdateForm" action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('patch ')
-                        <img  src="{{ getProfileImg() }}" style="width: 40px;height:40px;border-radius: 50%; display:block"/>
+                        @method('patch')
+                        <img src="{{ getProfileImg() }}" style="width: 40px;height:40px;border-radius: 50%; display:block" />
                         <div class="mb-4 text-center">
                             <label for="profile_img" class="form-label d-block text-start">Profile Image</label>
                             <input type="file" class="form-control" id="profile_img" name="profile_img"
                                 accept="image/png, image/jpeg, image/jpg, image/webp">
                             <div class="form-text text-start">Recommended: Square image (JPG, PNG, WEBP).</div>
                             @error('profile_img')
-                                <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
@@ -57,23 +57,35 @@
             <div class="card shadow-sm">
                 <div class="card-header">Change Password</div>
                 <div class="card-body">
-                    <form action="">
-
+                    <form action="{{ route('admin.update.password') }}" method="POST" id="passwordChangeForm">
+                        @csrf
+                        @method('patch')
+                        <div class="mb-3">
+                            <label for="old_password" class="form-label">Current Password</label>
+                            <input type="password" class="form-control" id="old_password" name="old_password"
+                                placeholder="Enter current password">
+                            @error('old_password')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">New Password</label>
                             <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Min. 8 characters">
+                                placeholder="Enter New Password">
+                            @error('password')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="password_confirm" class="form-label">Confirm New Password</label>
-                            <input type="password" class="form-control" id="password_confirm" name="password_confirm"
-                                placeholder="Re-type new password">
-                            <div class="text-danger small mt-1 d-none" id="passwordError">
-                                Passwords do not match.
-                            </div>
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
+                                placeholder="Confirm New Password">
+                            @error('password_confirmation')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
-                        <button class="btn btn-primary">Update Password</button>
+                        <button class="btn btn-primary w-100">Update Password</button>
                     </form>
                 </div>
             </div>
@@ -83,14 +95,21 @@
 
 @push('js')
 <script>
-  
-        
-        // Remove password error text dynamically
-        passwordConfirm.addEventListener('input', function() {
-            if (password.value === passwordConfirm.value) {
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordInput = document.getElementById('password');
+        const passwordConfirmInput = document.getElementById('password_confirmation');
+        const passwordError = document.getElementById('passwordError');
+
+        function validatePasswords() {
+            if (passwordInput.value !== passwordConfirmInput.value) {
+                passwordError.classList.remove('d-none');
+            } else {
                 passwordError.classList.add('d-none');
             }
-        });
+        }
+
+        passwordInput.addEventListener('input', validatePasswords);
+        passwordConfirmInput.addEventListener('input', validatePasswords);
     });
 </script>
 @endpush

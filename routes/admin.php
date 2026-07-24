@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\SingleProductController;
 
-Route::get('/product/{id}', [SingleProductController::class, 'show'])->name('product.show');
+Route::get('/product', [SingleProductController::class, 'show'])->name('product.show');
 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');

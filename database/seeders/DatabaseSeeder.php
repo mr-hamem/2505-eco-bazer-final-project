@@ -16,12 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
         $users = [
             [
                 'name' => 'shourab',
@@ -40,8 +34,14 @@ class DatabaseSeeder extends Seeder
             ]
         ];
 
-        foreach($users as $user){
-            User::create($user);
+        foreach ($users as $user) {
+            User::updateOrCreate(
+                ['email' => $user['shourab.cit.bd@gmail.com']], // Look up user by email
+                [                            // Attributes to set/update
+                    'name' => $user['shourab'],
+                    'password' => $user['password'],
+                ]
+            );
         }
     }
 }

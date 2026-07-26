@@ -8,11 +8,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/product', [SingleProductController::class, 'show'])->name('product.show');
 
-use App\Http\Controllers\ProductController;
-use Illuminate\Support\Facades\Route;
-
-Route::get('/product', [SingleProductController::class, 'show'])->name('product.show'); 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 

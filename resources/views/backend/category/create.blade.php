@@ -251,78 +251,7 @@
         transform: scale(.98);
     }
 
-    /* ---------- Responsive ---------- */
-    @media (max-width: 991.98px) {
-        .split-card .row {
-            min-height: auto;
-        }
-
-        .info-panel {
-            padding: 1.8rem 1.6rem;
-        }
-
-        .form-panel {
-            padding: 1.8rem 1.6rem;
-        }
-    }
-
-    @media (max-width: 767.98px) {
-        .create-wrap {
-            padding: 0 .5rem;
-        }
-
-        .split-card {
-            border-radius: 14px;
-        }
-
-        .info-panel {
-            padding: 1.6rem 1.4rem;
-            text-align: left;
-        }
-
-        .info-icon {
-            width: 46px;
-            height: 46px;
-            font-size: 22px;
-            margin-bottom: .9rem;
-        }
-
-        .info-panel h4 {
-            font-size: 1.1rem;
-        }
-
-        .info-tips {
-            display: none;
-        }
-
-        .info-footer {
-            margin-top: .8rem;
-        }
-
-        .form-panel {
-            padding: 1.6rem 1.3rem;
-        }
-
-        .toggle-inline-row {
-            gap: 18px;
-        }
-    }
-
-    @media (max-width: 575.98px) {
-        .form-panel h5 {
-            font-size: 1.05rem;
-        }
-
-        .field-block .form-control,
-        .field-block .form-select {
-            font-size: .9rem;
-        }
-
-        .btn-brand-submit {
-            font-size: .9rem;
-            padding: .75rem 1rem;
-        }
-    }
+   
 </style>
 
 <div class="container py-4">

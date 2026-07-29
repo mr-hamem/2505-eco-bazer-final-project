@@ -194,20 +194,109 @@
                         </div>
                     </div>
 
-                    <div class="col-12">
-                        <div class="preview-panel">
-                            <div class="thumbnail-gallery d-flex flex-column gap-2">
-                                <div class="thumb-box active"><img src="https://via.placeholder.com/50" alt="thumb"></div>
-                                <div class="thumb-box"><img src="https://via.placeholder.com/50" alt="thumb"></div>
-                                <div class="thumb-box"><img src="https://via.placeholder.com/50" alt="thumb"></div>
-                            </div>
-                            <div class="main-preview-box">
-                                <img src="https://via.placeholder.com/200" alt="Product Main Image"
-                                    class="img-fluid">
-                                <p class="text-muted small mb-0 mt-2">Current Active Image</p>
+                    <div class="form-section">
+                <div class="form-section-title"><i class="bx bx-image"></i> Product Media</div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold" for="featured_img">Featured Image</label>
+                        <div class="upload-box border rounded p-3 text-center bg-light">
+                            <i class="bx bx-cloud-upload display-6 text-primary mb-2"></i>
+                            <input class="form-control" id="featured_img" name="featured_img" type="file" accept="image/*">
+                            <small class="text-muted mt-1 d-block">Main display image for product list</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold" for="gallery_images">Product Gallery Images</label>
+                        <div class="upload-box border rounded p-3 text-center bg-light">
+                            <i class="bx bx-images display-6 text-primary mb-2"></i>
+                            <input type="file" class="form-control" id="gallery_images" name="gall_image[]"
+                                   accept="image/*" multiple>
+                            <small class="text-muted mt-1 d-block">Upload multiple supporting images</small>
+                        </div>
+                    </div>
+
+                    {{-- Current media preview --}}
+                    <div class="col-12 mt-4">
+                        <div class="p-3 border rounded bg-white shadow-sm">
+                            <h6 class="fw-semibold mb-3"><i class="bx bx-show me-1"></i> Current Media Preview</h6>
+
+                            <div class="d-flex flex-wrap flex-md-nowrap gap-4 align-items-start">
+                                {{-- Gallery thumbnails --}}
+                                <div class="d-flex flex-wrap gap-2 p-2 border rounded bg-light"
+                                     style="max-width: 280px; min-height: 120px;">
+                                    @php
+                                        $images = $product->gall_images ?? $product->gallery_images ?? null;
+                                        if (is_string($images)) {
+                                            $images = json_decode($images, true);
+                                        }
+                                    @endphp
+
+                                    @if (!empty($images) && is_array($images))
+                                        @foreach ($images as $galleryImg)
+                                            <div class="thumb-box position-relative border rounded overflow-hidden shadow-sm"
+                                                 style="width: 60px; height: 60px;">
+                                                <img src="{{ asset('storage/' . $galleryImg) }}"
+                                                     alt="Gallery Image" class="w-100 h-100 object-fit-cover">
+
+                                                {{-- Remove gallery image --}}
+                                                <form action="{{ route('admin.product.remove-image', $product->id) }}"
+                                                      method="POST" class="position-absolute top-0 end-0 m-0 p-0">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input type="hidden" name="image" value="{{ $galleryImg }}">
+                                                    <button type="submit"
+                                                            class="btn btn-danger btn-sm rounded-circle d-flex align-items-center justify-content-center p-0"
+                                                            style="width: 20px; height: 20px; line-height: 1;"
+                                                            title="Remove image">
+                                                        <i class="bx bx-x" style="font-size: 14px;"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div class="d-flex align-items-center justify-content-center w-100 text-muted small p-3">
+                                            No gallery images uploaded
+                                        </div>
+                                    @endif
+                                </div>
+
+                                {{-- Main featured image --}}
+                                <div class="main-preview-box text-center border rounded p-3 bg-light flex-grow-1"
+                                     style="max-width: 300px;">
+                                    @php
+                                        $mainImage = $product->featured_img ?? $product->image ?? null;
+                                    @endphp
+
+                                    @if ($mainImage)
+                                        <img src="{{ asset('storage/' . $mainImage) }}" alt="Featured Image"
+                                             class="img-fluid rounded shadow-sm" style="max-height: 180px; object-fit: contain;">
+                                        <br>
+
+                                        {{-- Remove featured image --}}
+                                        <form action="{{ route('admin.product.remove-image', $product->id) }}"
+                                              method="POST" class="mt-2 d-inline-block">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="image" value="{{ $mainImage }}">
+                                            <input type="hidden" name="type" value="featured">
+                                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                <i class="bx bx-trash me-1"></i> Remove Image
+                                            </button>
+                                        </form>
+                                    @else
+                                        <div class="p-4 text-muted">
+                                            <i class="bx bx-image-alt display-4"></i>
+                                            <p class="small mb-0 mt-1">No Featured Image</p>
+                                        </div>
+                                    @endif
+                                    <span class="badge bg-primary-subtle text-primary mt-2">Active Main Image</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
                 </div>
             </div>
 

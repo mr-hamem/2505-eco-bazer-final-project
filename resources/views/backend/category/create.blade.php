@@ -75,6 +75,7 @@
     }
 
     .info-panel h4 {
+        color: #fff;
         font-weight: 700;
         margin-bottom: .6rem;
         position: relative;

@@ -366,7 +366,7 @@ Shop
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
+                            <a href="./~.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
                             <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
@@ -509,15 +509,16 @@ Shop
             </div>
             <div class="col-6 col-lg-3">
                 <div class="featureCard">
+                    @foreach (products as product)
                         <div class="featureImg">
-                            <a href="./iteminfo.html"><img class="img-fluid" src="{{asset('frontend/img/AppleBig.png')}}" alt=""></a>
+                            <a href="./iteminfo.html"><img class="img-fluid" src="{{ getImage($products->image) }}" alt="{{ $product->title }}"></a>
                             <ul class="featureIcons">
                             <li><a href="#"><iconify-icon icon="simple-line-icons:heart"></iconify-icon></a></li>
                             <li><a href="#" class="quickViewBtn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-img="{{asset('frontend/img/AppleBig.png')}}" data-title="Green Apple" data-price="$14.99" data-sku="FRT-001" data-category="Fruits"><iconify-icon icon="bx:show"></iconify-icon></a></li>
                             </ul>
                         </div>
                         <div class="featureCnt">
-                            <a href="./iteminfo.html">Green Apple</a>
+                            <a href="./iteminfo.html">{{ $products->title }}</a>
                             <p>$14.99</p>
                             <div class="stars">
                             <iconify-icon icon="material-symbols-light:star"></iconify-icon>
@@ -528,6 +529,7 @@ Shop
                         </div>
                         <a href="#" class="cartBtn"><iconify-icon icon="clarity:shopping-bag-line"></iconify-icon></a>
                         </div>                  
+                    @endforeach
                 </div>
             </div>
             <div class="col-6 col-lg-3">

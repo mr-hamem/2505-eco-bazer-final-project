@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\CustomerController;

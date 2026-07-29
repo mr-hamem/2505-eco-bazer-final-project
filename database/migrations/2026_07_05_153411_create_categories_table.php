@@ -21,7 +21,6 @@ return new class extends Migration
             $table->boolean('status')->default(true);
             $table->softDeletes(); // <--- এই লাইনটি এখানে যুক্ত করুন
             $table->timestamps();
-            $table->timestamps();
         });
     }
 

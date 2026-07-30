@@ -14,10 +14,12 @@
             <h3 class="page-title mb-1">Categories</h3>
             <p class="page-subtitle mb-0">Organize your products into categories</p>
         </div>
-        <a href="{{ route('admin.category.create') }}" class="btn btn-brand px-3 py-2 add-category-btn">
+        <button type="button" class="btn btn-brand px-3 py-2 add-category-btn"
+            data-bs-toggle="modal" data-bs-target="#addCategoryModal">
             <i class='bx bx-plus'></i> Add Category
-        </a>
+        </button>
     </div>
+    @include('backend.category.addmodal')
 
     <!-- Stats -->
     <div class="row g-3 mb-4">
@@ -124,7 +126,7 @@
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td><span class="category-title">{{ $category->title }}</span></td>
-                        <td>0</td>
+                        <td>{{ $category->products_count }}</td>
                         <td>
                             <span class="category-desc">
                                 {{ strlen($category->details) == 0 ? '---' : (strlen($category->details) > 25 ? substr($category->details, 0, 25) . '...' : $category->details) }}
@@ -152,7 +154,7 @@
                                 class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure?')">
+                                <button type="submit" class="btn btn-delete" onclick="return confirm('Delete this category?');">
                                     <i class='bx bx-trash-alt'></i> Delete
                                 </button>
                             </form>

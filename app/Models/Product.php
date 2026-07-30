@@ -22,6 +22,8 @@ class Product extends Model
         "sku",
         "expiry_date",
         "units",
+        "featured",
+        "status",
     ];
 
 

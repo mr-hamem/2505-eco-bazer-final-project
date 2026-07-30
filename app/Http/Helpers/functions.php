@@ -13,5 +13,9 @@ function activeLink($route, $activeClass = 'active')
 
 
 function getImage($image = null){
-    return $image ? asset('storage/' . $image) : asset('placeholder.png');
+    if ($image && \Illuminate\Support\Facades\Storage::disk('public')->exists($image)) {
+        return asset('storage/' . $image);
+    }
+
+    return asset('placeholder.png');
 }

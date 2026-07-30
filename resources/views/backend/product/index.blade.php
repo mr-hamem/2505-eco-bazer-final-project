@@ -70,7 +70,7 @@
     <!-- Filters -->
     <div class="card filter-card mb-4">
         <div class="card-body p-3">
-            <form action="{{ route('admin.category.index') }}" class="row g-3 align-items-end">
+            <form action="{{ route('admin.product.index') }}" class="row g-3 align-items-end">
                 <div class="col-12 col-md-5">
                     <label class="form-label">Search Products</label>
                     <div class="input-group">
@@ -131,7 +131,7 @@
                                 <a href="#" class="product-title">{{ $product->title }}</a>
                             </div>
                         </td>
-                        <td>{{ $product->category->title }}</td>
+                        <td>{{ $product->category?->title ?? 'Uncategorized' }}</td>
                         <td>
                             @if ($product->selling_price && $product->selling_price > 0)
                             <p class="price-current">{{ number_format($product->selling_price, 2) }} {{ env('DEFAULT_CURRENCY') . "/ $product->units" }}</p>
@@ -169,7 +169,8 @@
                                 class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="icon-btn icon-btn-danger border-0" title="Delete">
+                                <button type="submit" class="icon-btn icon-btn-danger border-0" title="Delete"
+                                    onclick="return confirm('Delete this product? You can restore it later from the database.');">
                                     <i class='bx bx-trash-alt'></i>
                                 </button>
                             </form>

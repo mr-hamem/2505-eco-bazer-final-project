@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -13,12 +14,15 @@ class CategoryController extends Controller
             $query->whereLike('title', "%$request->search%");
         }
 
-        if($request->status){
+        if ($request->filled('status')) {
             $query->where('status',$request->status);
         }
 
-        $categories = $query->get();
-        // dd($request->all());
+        if ($request->boolean('empty_category')) {
+            $query->doesntHave('products');
+        }
+
+        $categories = $query->withCount('products')->get();
         return view('backend.category.index', compact('categories'));
     }
 
@@ -27,22 +31,23 @@ class CategoryController extends Controller
     }
 
     function store(Request $request){
-        // Categories Validation
-        $request->validate([
-            'title' => 'required|min:2',
-            'slug' => 'required|unique:categories,slug',
-            'img' => 'nullable|mimes:jpg,png,webp',
-            'details' => 'nullable|max:150'
-        ]);
-
-        Category::create([
-            'title' => $request->title,
-            'slug' => str()->slug($request->slug),
-            'img' => $request->img,
-            'details' => $request->details,
-        ]);
+        $data = $this->validatedData($request);
+        Category::create($data);
     
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category.index')->with('success', 'Category created successfully!');
+    }
+
+    public function edit($id)
+    {
+        return view('backend.category.edit', ['category' => Category::findOrFail($id)]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $category = Category::findOrFail($id);
+        $category->update($this->validatedData($request, $category));
+
+        return redirect()->route('admin.category.index')->with('success', 'Category updated successfully!');
     }
 
     /**
@@ -54,5 +59,31 @@ class CategoryController extends Controller
         $category->delete(); // Soft delete করবে (Model-এ SoftDeletes trait ব্যবহার করা থাকলে)
 
         return redirect()->back()->with('success', 'Category deleted successfully!');
+    }
+
+    private function validatedData(Request $request, ?Category $category = null): array
+    {
+        $request->validate([
+            'title' => ['required', 'string', 'min:2', 'max:255'],
+            'slug' => ['required', 'string', Rule::unique('categories', 'slug')->ignore($category?->id)],
+            'img' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+            'details' => ['nullable', 'string', 'max:150'],
+            'featured' => ['nullable', 'boolean'],
+            'status' => ['nullable', 'boolean'],
+        ]);
+
+        $data = [
+            'title' => $request->title,
+            'slug' => str()->slug($request->slug),
+            'details' => $request->details,
+            'featured' => $request->boolean('featured'),
+            'status' => $request->boolean('status'),
+        ];
+
+        if ($request->hasFile('img')) {
+            $data['img'] = $request->file('img')->store('categories', 'public');
+        }
+
+        return $data;
     }
 }

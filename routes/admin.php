@@ -26,6 +26,7 @@ Route::prefix('/category')->name('category.')->controller(CategoryController::cl
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
     Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::put('/update/{id}', 'update')->name('update');
     Route::delete('/destroy/{id}', 'destroy')->name('destroy');
 });
 
@@ -47,4 +48,3 @@ Route::get('/customers', [CustomerController::class, 'show'])->name('customers.s
 //Password Update
 Route::patch('/change-password', [AdminProfileController::class, 'changePassword'])->name('change.password');
 Route::patch('/update-password', [AdminProfileController::class, 'updatePassword'])->name('update.password');
-

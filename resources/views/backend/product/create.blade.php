@@ -8,6 +8,39 @@
 @endpush
 
 @push('js')
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const featuredInput = document.getElementById('featured_img');
+    const featuredPreview = document.getElementById('featuredPreview');
+    const galleryInput = document.getElementById('gallery_images');
+    const galleryPreview = document.getElementById('galleryPreview');
+
+    featuredInput.addEventListener('change', () => {
+        const file = featuredInput.files[0];
+        if (!file) {
+            featuredPreview.style.display = 'none';
+            return;
+        }
+        featuredPreview.src = URL.createObjectURL(file);
+        featuredPreview.style.display = 'block';
+    });
+
+    galleryInput.addEventListener('change', () => {
+        galleryPreview.innerHTML = '';
+        Array.from(galleryInput.files).forEach((file) => {
+            const preview = document.createElement('img');
+            preview.src = URL.createObjectURL(file);
+            preview.alt = 'Gallery image preview';
+            preview.className = 'img-thumbnail';
+            preview.style.cssText = 'width:90px;height:90px;object-fit:cover;';
+            galleryPreview.appendChild(preview);
+        });
+    });
+});
+</script>
+@endpush
+
+@push('js')
 <script src="{{ asset('backend/assets/js/rte.js') }}"></script>
 <script src="{{ asset('backend/assets/js/all_plugins.min.js') }}"></script>
 <script>
@@ -174,27 +207,6 @@
 
             <!-- Media -->
             <div class="form-section">
-                <div class="form-section-title"><i class="bx bx-image"></i> Media</div>
-                <div class="row g-4">
-                    <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold" for="featured_img">Featured Image</label>
-                        <div class="upload-box">
-                            <i class="bx bx-cloud-upload d-block mb-1"></i>
-                            <input class="form-control border-0 bg-transparent text-center" id="featured_img"
-                                name="featured_img" type="file">
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold" for="image">Product Gallery Images</label>
-                        <div class="upload-box">
-                            <i class="bx bx-images d-block mb-1"></i>
-                            <input type="file" class="form-control border-0 bg-transparent text-center" id="image"
-                                name="gall_image[]" accept="image/*" multiple>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
                 <div class="form-section-title"><i class="bx bx-image"></i> Product Media</div>
                 <div class="row g-4">
                     <div class="col-md-6">
@@ -216,87 +228,12 @@
                         </div>
                     </div>
 
-                    {{-- Current media preview --}}
-                    <div class="col-12 mt-4">
-                        <div class="p-3 border rounded bg-white shadow-sm">
-                            <h6 class="fw-semibold mb-3"><i class="bx bx-show me-1"></i> Current Media Preview</h6>
-
-                            <div class="d-flex flex-wrap flex-md-nowrap gap-4 align-items-start">
-                                {{-- Gallery thumbnails --}}
-                                <div class="d-flex flex-wrap gap-2 p-2 border rounded bg-light"
-                                     style="max-width: 280px; min-height: 120px;">
-                                    @php
-                                        $images = $product->gall_images ?? $product->gallery_images ?? null;
-                                        if (is_string($images)) {
-                                            $images = json_decode($images, true);
-                                        }
-                                    @endphp
-
-                                    @if (!empty($images) && is_array($images))
-                                        @foreach ($images as $galleryImg)
-                                            <div class="thumb-box position-relative border rounded overflow-hidden shadow-sm"
-                                                 style="width: 60px; height: 60px;">
-                                                <img src="{{ asset('storage/' . $galleryImg) }}"
-                                                     alt="Gallery Image" class="w-100 h-100 object-fit-cover">
-
-                                                {{-- Remove gallery image --}}
-                                                <form action="{{ route('admin.product.remove-image', $product->id) }}"
-                                                      method="POST" class="position-absolute top-0 end-0 m-0 p-0">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <input type="hidden" name="image" value="{{ $galleryImg }}">
-                                                    <button type="submit"
-                                                            class="btn btn-danger btn-sm rounded-circle d-flex align-items-center justify-content-center p-0"
-                                                            style="width: 20px; height: 20px; line-height: 1;"
-                                                            title="Remove image">
-                                                        <i class="bx bx-x" style="font-size: 14px;"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        @endforeach
-                                    @else
-                                        <div class="d-flex align-items-center justify-content-center w-100 text-muted small p-3">
-                                            No gallery images uploaded
-                                        </div>
-                                    @endif
-                                </div>
-
-                                {{-- Main featured image --}}
-                                <div class="main-preview-box text-center border rounded p-3 bg-light flex-grow-1"
-                                     style="max-width: 300px;">
-                                    @php
-                                        $mainImage = $product->featured_img ?? $product->image ?? null;
-                                    @endphp
-
-                                    @if ($mainImage)
-                                        <img src="{{ asset('storage/' . $mainImage) }}" alt="Featured Image"
-                                             class="img-fluid rounded shadow-sm" style="max-height: 180px; object-fit: contain;">
-                                        <br>
-
-                                        {{-- Remove featured image --}}
-                                        <form action="{{ route('admin.product.remove-image', $product->id) }}"
-                                              method="POST" class="mt-2 d-inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="hidden" name="image" value="{{ $mainImage }}">
-                                            <input type="hidden" name="type" value="featured">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm">
-                                                <i class="bx bx-trash me-1"></i> Remove Image
-                                            </button>
-                                        </form>
-                                    @else
-                                        <div class="p-4 text-muted">
-                                            <i class="bx bx-image-alt display-4"></i>
-                                            <p class="small mb-0 mt-1">No Featured Image</p>
-                                        </div>
-                                    @endif
-                                    <span class="badge bg-primary-subtle text-primary mt-2">Active Main Image</span>
-                                </div>
-                            </div>
+                    <div class="col-12">
+                        <div class="d-flex flex-wrap gap-3 mt-2">
+                            <img id="featuredPreview" src="{{ getImage() }}" alt="Featured image preview" class="img-thumbnail" style="display:none; width:120px; height:120px; object-fit:cover;">
+                            <div id="galleryPreview" class="d-flex flex-wrap gap-2"></div>
                         </div>
                     </div>
-                </div>
-            </div>
                 </div>
             </div>
 
@@ -304,10 +241,10 @@
             <div class="form-section">
                 <div class="form-section-title"><i class="bx bx-show"></i> Visibility</div>
                 <div class="form-switch-card form-check form-switch mb-0">
-                    <input type="hidden" name="is_active" value="0">
-                    <input class="form-check-input check-input-success" type="checkbox" id="is_active"
-                        name="is_active" value="1" checked>
-                    <label class="form-check-label fw-semibold ms-2 mb-0" for="is_active">
+                    <input type="hidden" name="status" value="0">
+                    <input class="form-check-input check-input-success" type="checkbox" id="status"
+                        name="status" value="1" checked>
+                    <label class="form-check-label fw-semibold ms-2 mb-0" for="status">
                         Active (Visible on E-commerce Storefront)
                     </label>
                 </div>
@@ -317,7 +254,7 @@
                 <button type="submit" class="btn btn-brand px-4 py-2">
                     <i class="bx bx-save me-1"></i> Save Product
                 </button>
-                <a href="#" class="btn btn-cancel px-4 py-2">
+                <a href="{{ route('admin.product.index') }}" class="btn btn-cancel px-4 py-2">
                     Cancel
                 </a>
             </div>

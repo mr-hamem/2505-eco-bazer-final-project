@@ -7,30 +7,22 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Allow multiple categories to use the same slug.
      */
     public function up(): void
     {
-        if (Schema::hasColumn('categories', 'deleted_at')) {
-            return;
-        }
-
         Schema::table('categories', function (Blueprint $table) {
-            $table->softDeletes(); // এখানে যোগ হবে
+            $table->dropUnique('categories_slug_unique');
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Restore the original uniqueness rule if this migration is rolled back.
      */
     public function down(): void
     {
-        if (! Schema::hasColumn('categories', 'deleted_at')) {
-            return;
-        }
-
         Schema::table('categories', function (Blueprint $table) {
-            $table->dropSoftDeletes(); // এখানে যোগ হবে
+            $table->unique('slug');
         });
     }
 };

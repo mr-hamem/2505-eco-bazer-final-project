@@ -25,9 +25,10 @@
             <span class="badge-stock-status"><i class="bx bx-check-circle me-1"></i>In Stock</span>
         </div>
 
-        <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('admin.product.update', $product->id) }}" method="POST" enctype="multipart/form-data"
               class="needs-validation" novalidate>
             @csrf
+            @method('PUT')
 
             {{-- ================= Basic Info ================= --}}
             <div class="form-section">
@@ -226,22 +227,14 @@
                                         @foreach ($images as $galleryImg)
                                             <div class="thumb-box position-relative border rounded overflow-hidden shadow-sm"
                                                  style="width: 60px; height: 60px;">
-                                                <img src="{{ asset('storage/' . $galleryImg) }}"
+                                                <img src="{{ getImage($galleryImg) }}"
                                                      alt="Gallery Image" class="w-100 h-100 object-fit-cover">
 
-                                                {{-- Remove gallery image --}}
-                                                <form action="{{ route('admin.product.remove-image', $product->id) }}"
-                                                      method="POST" class="position-absolute top-0 end-0 m-0 p-0">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <input type="hidden" name="image" value="{{ $galleryImg }}">
-                                                    <button type="submit"
-                                                            class="btn btn-danger btn-sm rounded-circle d-flex align-items-center justify-content-center p-0"
-                                                            style="width: 20px; height: 20px; line-height: 1;"
-                                                            title="Remove image">
-                                                        <i class="bx bx-x" style="font-size: 14px;"></i>
-                                                    </button>
-                                                </form>
+                                                <button type="submit" form="remove-gallery-{{ $product->id }}-{{ $loop->index }}"
+                                                        class="btn btn-danger btn-sm rounded-circle d-flex align-items-center justify-content-center p-0 position-absolute top-0 end-0"
+                                                        style="width: 20px; height: 20px; line-height: 1;" title="Remove image">
+                                                    <i class="bx bx-x" style="font-size: 14px;"></i>
+                                                </button>
                                             </div>
                                         @endforeach
                                     @else
@@ -259,21 +252,13 @@
                                     @endphp
 
                                     @if ($mainImage)
-                                        <img src="{{ asset('storage/' . $mainImage) }}" alt="Featured Image"
+                                        <img src="{{ getImage($mainImage) }}" alt="Featured Image"
                                              class="img-fluid rounded shadow-sm" style="max-height: 180px; object-fit: contain;">
                                         <br>
 
-                                        {{-- Remove featured image --}}
-                                        <form action="{{ route('admin.product.remove-image', $product->id) }}"
-                                              method="POST" class="mt-2 d-inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="hidden" name="image" value="{{ $mainImage }}">
-                                            <input type="hidden" name="type" value="featured">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm">
-                                                <i class="bx bx-trash me-1"></i> Remove Image
-                                            </button>
-                                        </form>
+                                        <button type="submit" form="remove-featured-{{ $product->id }}" class="btn btn-outline-danger btn-sm mt-2">
+                                            <i class="bx bx-trash me-1"></i> Remove Image
+                                        </button>
                                     @else
                                         <div class="p-4 text-muted">
                                             <i class="bx bx-image-alt display-4"></i>
@@ -291,12 +276,20 @@
             {{-- ================= Visibility ================= --}}
             <div class="form-section">
                 <div class="form-section-title"><i class="bx bx-show"></i> Visibility</div>
-                <div class="form-switch-card form-check form-switch mb-0">
-                    <input type="hidden" name="is_active" value="0">
-                    <input class="form-check-input check-input-success" type="checkbox" id="is_active"
-                           name="is_active" value="1" checked>
-                    <label class="form-check-label fw-semibold ms-2 mb-0" for="is_active">
+                <div class="form-switch-card form-check form-switch mb-3">
+                    <input type="hidden" name="status" value="0">
+                    <input class="form-check-input check-input-success" type="checkbox" id="status"
+                           name="status" value="1" @checked(old('status', $product->status))>
+                    <label class="form-check-label fw-semibold ms-2 mb-0" for="status">
                         Active (Visible on E-commerce Storefront)
+                    </label>
+                </div>
+                <div class="form-switch-card form-check form-switch mb-0">
+                    <input type="hidden" name="featured" value="0">
+                    <input class="form-check-input check-input-success" type="checkbox" id="featured"
+                           name="featured" value="1" @checked(old('featured', $product->featured))>
+                    <label class="form-check-label fw-semibold ms-2 mb-0" for="featured">
+                        Featured Product
                     </label>
                 </div>
             </div>
@@ -306,10 +299,27 @@
                 <button type="submit" class="btn btn-brand px-4 py-2">
                     <i class="bx bx-save me-1"></i> Save Product
                 </button>
-                <a href="#" class="btn btn-cancel px-4 py-2">Cancel</a>
+                <a href="{{ route('admin.product.index') }}" class="btn btn-cancel px-4 py-2">Cancel</a>
             </div>
 
         </form>
+
+        @foreach ($images ?? [] as $index => $galleryImg)
+            <form id="remove-gallery-{{ $product->id }}-{{ $index }}" action="{{ route('admin.product.remove-image', $product->id) }}" method="POST" class="d-none">
+                @csrf
+                @method('DELETE')
+                <input type="hidden" name="image" value="{{ $galleryImg }}">
+            </form>
+        @endforeach
+
+        @if (!empty($mainImage))
+            <form id="remove-featured-{{ $product->id }}" action="{{ route('admin.product.remove-image', $product->id) }}" method="POST" class="d-none">
+                @csrf
+                @method('DELETE')
+                <input type="hidden" name="image" value="{{ $mainImage }}">
+                <input type="hidden" name="type" value="featured">
+            </form>
+        @endif
     </div>
 </div>
 @endsection

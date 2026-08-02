@@ -43,5 +43,10 @@ class DatabaseSeeder extends Seeder
         foreach($users as $user){
             User::create($user);
         }
+
+        $this->call([
+            CategorySeeder::class,
+            ProductSeeder::class,
+        ]);
     }
 }

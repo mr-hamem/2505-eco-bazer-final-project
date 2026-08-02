@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -63,9 +62,12 @@ class CategoryController extends Controller
 
     private function validatedData(Request $request, ?Category $category = null): array
     {
+        $slug = str()->slug($request->input('slug'));
+        $request->merge(['slug' => $slug]);
+
         $request->validate([
             'title' => ['required', 'string', 'min:2', 'max:255'],
-            'slug' => ['required', 'string', Rule::unique('categories', 'slug')->ignore($category?->id)],
+            'slug' => ['required', 'string'],
             'img' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'details' => ['nullable', 'string', 'max:150'],
             'featured' => ['nullable', 'boolean'],
@@ -74,7 +76,7 @@ class CategoryController extends Controller
 
         $data = [
             'title' => $request->title,
-            'slug' => str()->slug($request->slug),
+            'slug' => $slug,
             'details' => $request->details,
             'featured' => $request->boolean('featured'),
             'status' => $request->boolean('status'),

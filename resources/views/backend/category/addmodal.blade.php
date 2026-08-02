@@ -72,6 +72,7 @@
 
     .info-panel h4 {
         font-weight: 700;
+        color: #fff;
         margin-bottom: .6rem;
         position: relative;
         z-index: 1;
@@ -252,7 +253,7 @@
 
 <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content border-0 bg-transparent">
+        <div class="modal-content border-0 bg-transparent shadow-none">
             <div class="modal-body p-0">
                 <div class="create-wrap w-100">
                     <div class="card split-card">
@@ -293,7 +294,8 @@
 
                         <div class="field-block">
                             <label>Category Title <span class="required-star">*</span></label>
-                            <input type="text" name="title" placeholder="e.g. Fresh Vegetables" class="form-control">
+                            <input type="text" name="title" value="{{ old('title') }}"
+                                placeholder="e.g. Fresh Vegetables" class="form-control" required>
                             @error('title')
                             <div class="text-danger small mt-1">{{ $message }}</div>
                             @enderror
@@ -301,8 +303,8 @@
 
                         <div class="field-block">
                             <label>Slug <span class="required-star">*</span></label>
-                            <input type="text" name="slug" placeholder="example: ac, dairy-product"
-                                class="form-control">
+                            <input type="text" name="slug" value="{{ old('slug') }}"
+                                placeholder="example: fresh-vegetables" class="form-control" required>
                             @error('slug')
                             <div class="text-danger small mt-1">{{ $message }}</div>
                             @enderror
@@ -321,7 +323,7 @@
 
                         <div class="field-block mb-2">
                             <label>Description</label>
-                            <textarea name="details" class="form-control" placeholder="Write a short description..."></textarea>
+                            <textarea name="details" class="form-control" placeholder="Write a short description...">{{ old('details') }}</textarea>
                             @error('details')
                             <div class="text-danger small mt-1">{{ $message }}</div>
                             @enderror
@@ -330,15 +332,15 @@
                         <div class="toggle-inline-row">
                             <div class="toggle-inline">
                                 <div class="form-check form-switch mb-0">
-                                    <input class="form-check-input" name="featured" type="checkbox" role="switch"
-                                        id="featured">
+                                    <input class="form-check-input" name="featured" value="1" type="checkbox" role="switch"
+                                        id="featured" @checked(old('featured'))>
                                 </div>
                                 <label for="featured">Featured</label>
                             </div>
                             <div class="toggle-inline">
                                 <div class="form-check form-switch mb-0">
-                                    <input class="form-check-input" name="status" type="checkbox" role="switch"
-                                        id="status" checked>
+                                    <input class="form-check-input" name="status" value="1" type="checkbox" role="switch"
+                                        id="status" @checked(old('status', true))>
                                 </div>
                                 <label for="status">Status</label>
                             </div>

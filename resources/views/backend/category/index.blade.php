@@ -9,6 +9,13 @@
 
 <div class="container-fluid px-4 py-4">
 
+    @if ($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ $errors->first() }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
     <div class="d-flex justify-content-between align-items-center mb-4 page-header">
         <div>
             <h3 class="page-title mb-1">Categories</h3>
@@ -166,9 +173,10 @@
                             <div class="empty-state text-center">
                                 <i class='bx bx-category d-block mb-2'></i>
                                 <p class="mb-3 text-muted">No categories were found</p>
-                                <a href="{{ route('admin.category.create') }}" class="btn btn-brand btn-sm px-3">
+                                <button type="button" class="btn btn-brand btn-sm px-3"
+                                    data-bs-toggle="modal" data-bs-target="#addCategoryModal">
                                     Create your first category
-                                </a>
+                                </button>
                             </div>
                         </td>
                     </tr>

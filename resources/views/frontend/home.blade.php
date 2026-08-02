@@ -568,74 +568,37 @@ Homepage
 </section>
 <section class="topCatagory">
     <div class="container">
-        <h2>Top Catagory</h2>
-        <img class="ctgImg" src="{{ asset('frontend/img/Line.png')}}" alt="">
+        <h2>Top Category</h2>
+        <img class="ctgImg" src="{{ asset('frontend/img/Line.png') }}" alt="Line">
+        
         <div class="swiper catagorySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="catagoryCard">
-                        <a href="#">
-                            <img class="ctgImg" src="{{ asset('frontend/img/Vegetable vector.png')}}" alt=""><br>
-                            <h5>Vegetable</h5>
-                            <p>165 Products</p>
-                        </a>
+
+                {{-- Dynamic Loop Start --}}
+                @forelse($categories as $category)
+                    <div class="swiper-slide">
+                        <div class="catagoryCard">
+                            <a href="#">
+                                {{-- অ্যাডমিন থেকে আপলোড করা ছবি, না থাকলে ডিফল্ট ছবি দেখাবে --}}
+                                <img class="ctgImg" 
+                                     src="{{ $category->image ? asset('uploads/category/' . $category->image) : asset('frontend/img/Vegetable vector.png') }}" 
+                                     alt="{{ $category->name }}"
+                                     style="width: 80px; height: 80px; object-fit: contain;">
+                                <br>
+                                <h5>{{ $category->name }}</h5>
+                                <p>{{ $category->products_count ?? 0 }} Products</p>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="catagoryCard">
-                        <a href="#">
-                            <img class="ctgImg" src="{{ asset('frontend/img/Vegetable vector.png')}}" alt=""><br>
-                            <h5>Vegetable</h5>
-                            <p>165 Products</p>
-                        </a>
+                @empty
+                    <div class="swiper-slide w-100">
+                        <p class="text-center">No categories found!</p>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="catagoryCard">
-                        <a href="#">
-                            <img class="ctgImg" src="{{ asset('frontend/img/Vegetable vector.png')}}" alt=""><br>
-                            <h5>Vegetable</h5>
-                            <p>165 Products</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="catagoryCard">
-                        <a href="#">
-                            <img class="ctgImg" src="{{ asset('frontend/img/Vegetable vector.png')}}" alt=""><br>
-                            <h5>Vegetable</h5>
-                            <p>165 Products</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="catagoryCard">
-                        <a href="#">
-                            <img class="ctgImg" src="{{ asset('frontend/img/Vegetable vector.png')}}" alt=""><br>
-                            <h5>Vegetable</h5>
-                            <p>165 Products</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="catagoryCard">
-                        <a href="#">
-                            <img class="ctgImg" src="{{ asset('frontend/img/Vegetable vector.png')}}" alt=""><br>
-                            <h5>Vegetable</h5>
-                            <p>165 Products</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="catagoryCard">
-                        <a href="#">
-                            <img class="ctgImg" src="{{ asset('frontend/img/Vegetable vector.png')}}" alt=""><br>
-                            <h5>Vegetable</h5>
-                            <p>165 Products</p>
-                        </a>
-                    </div>
-                </div>
+                @endforelse
+                {{-- Dynamic Loop End --}}
+
             </div>
+
             <div class="rightBtn">
                 <iconify-icon icon="basil:arrow-right-solid" width="24" height="24" style="color: #000"></iconify-icon>
             </div>

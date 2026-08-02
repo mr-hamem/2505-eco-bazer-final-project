@@ -10,7 +10,8 @@ use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [FrontendController::class, 'homepage'])->name('frontend.index');
+// ১৩ নম্বর লাইনটি এভাবে আপডেট করুন:
+Route::get('/', [HomepageController::class, 'home'])->name('frontend.index');
 Route::get('/home', [HomepageController::class, 'home'])->name('frontend.home');
 //Route::view('/shop', 'frontend.shop')->name('shop');
 Route::get('/shop', [ShopController::class, 'shop'])->name('frontend.shop');  

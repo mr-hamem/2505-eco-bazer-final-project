@@ -46,7 +46,7 @@
             <div class="container d-none d-lg-block">
                 <div class="row align-items-center">
                     <div class="col-lg-3">
-                        <a href="#"><img src="{{ asset('frontend/img/Logo.png')}}" alt=""></a>
+                        <a href="{{ route('frontend.index') }}"><img src="{{ asset('frontend/img/Logo.png')}}" alt=""></a>
                     </div>
                     <div class="col-lg-6 m-auto">
                         <form>
@@ -78,7 +78,7 @@
                     <div class="nav col-lg-8">
                         <ul class="d-flex">
                             <li>
-                                <a href="{{ route('frontend.home') }}" class="active">Home</a>
+                                <a href="{{ route('frontend.index') }}" class="active">Home</a>
                             </li>
                             <li>
                                 <a href="{{ route('frontend.shop') }}">Shop</a>

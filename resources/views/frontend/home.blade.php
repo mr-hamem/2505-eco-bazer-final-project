@@ -124,8 +124,11 @@ Homepage
                 <div class="swiper-slide">
                     <div class="featureCard">
                         <div class="featureImg">
-                            <a href="#"><img class="img-fluid" src="{{ getImage($product->image) }}"
-                                    alt="{{ $product->title }}"></a>
+                           <a href="{{ route('frontend.product.details', $product->id) }}">
+    <img class="img-fluid"
+        src="{{ getImage($product->image) }}"
+        alt="{{ $product->title }}">
+</a>
                             <ul class="featureIcons">
                                 <li><a href="#">
                                         <iconify-icon icon="simple-line-icons:heart"></iconify-icon>
@@ -508,7 +511,12 @@ Homepage
                 <div class="swiper-slide">
                     <div class="featureCard">
                         <div class="featureImg">
-                            <a href="#"><img class="img-fluid" src="{{ asset('frontend/img/AppleBig.png')}}" alt=""></a>
+                           <a href="{{ route('frontend.product.details', $product->id) }}">
+                             {{ $product->title }}
+                               </a>
+                        <iconify-icon icon="material-symbols:home-outline" width="22" height="22"></iconify-icon>
+
+                    <img class="img-fluid" src="{{ asset('frontend/img/AppleBig.png')}}" alt=""></a>
                             <ul class="featureIcons">
                                 <li><a href="#">
                                         <iconify-icon icon="simple-line-icons:heart"></iconify-icon>
@@ -537,7 +545,8 @@ Homepage
                 <div class="swiper-slide">
                     <div class="featureCard">
                         <div class="featureImg">
-                            <a href="#"><img class="img-fluid" src="{{ asset('frontend/img/Cabbage.png')}}" alt=""></a>
+                           <a href="{{ route('frontend.product.details', $product->id) }}">
+                              {{ $product->title }}<img class="img-fluid" src="{{ asset('frontend/img/Cabbage.png')}}" alt=""></a>
                             <ul class="featureIcons">
                                 <li><a href="#">
                                         <iconify-icon icon="simple-line-icons:heart"></iconify-icon>
@@ -548,7 +557,9 @@ Homepage
                             </ul>
                         </div>
                         <div class="featureCnt">
-                            <a href="#">Green Cabbage</a>
+                          <a href="{{ route('frontend.product.details', $product->id) }}">
+                          {{ $product->title }}
+                              </a>
                             <p>$14.99</p>
                             <div class="stars">
                                 <iconify-icon icon="material-symbols-light:star"></iconify-icon>
@@ -566,7 +577,9 @@ Homepage
                 <div class="swiper-slide">
                     <div class="featureCard">
                         <div class="featureImg">
-                            <a href="#"><img class="img-fluid" src="{{ asset('frontend/img/Green Lettuce.png')}}"
+                          <a href="{{ route('frontend.product.details', $product->id) }}">
+                             {{ $product->title }}
+                                    <img class="img-fluid" src="{{ asset('frontend/img/Green Lettuce.png')}}"
                                     alt=""></a>
                             <ul class="featureIcons">
                                 <li><a href="#">
@@ -578,7 +591,9 @@ Homepage
                             </ul>
                         </div>
                         <div class="featureCnt">
-                            <a href="#">Green Lettuce</a>
+                            <a href="{{ route('frontend.product.details', $product->id) }}">
+                                {{ $product->title }}
+                                     </a>Green Lettuce</a>
                             <p>$14.99</p>
                             <div class="stars">
                                 <iconify-icon icon="material-symbols-light:star"></iconify-icon>
@@ -596,7 +611,9 @@ Homepage
                 <div class="swiper-slide">
                     <div class="featureCard col-lg">
                         <div class="featureImg">
-                            <a href="#"><img class="img-fluid" src="{{ asset('frontend/img/Green Chili.png')}}"
+                            <a href="{{ route('frontend.product.details', $product->id) }}">
+                               {{ $product->title }}
+                                     </a><img class="img-fluid" src="{{ asset('frontend/img/Green Chili.png')}}"
                                     alt=""></a>
                             <ul class="featureIcons">
                                 <li><a href="#">
@@ -608,7 +625,9 @@ Homepage
                             </ul>
                         </div>
                         <div class="featureCnt">
-                            <a href="#">Green Chili</a>
+                            <a href="{{ route('frontend.product.details', $product->id) }}">
+                                {{ $product->title }}
+                            </a>
                             <p>$14.99</p>
                             <div class="stars">
                                 <iconify-icon icon="material-symbols-light:star"></iconify-icon>
@@ -626,7 +645,9 @@ Homepage
                 <div class="swiper-slide">
                     <div class="featureCard">
                         <div class="featureImg">
-                            <a href="#"><img class="img-fluid" src="{{ asset('frontend/img/Corn.png')}}" alt=""></a>
+                            <a href="{{ route('frontend.product.details', $product->id) }}">
+                                <img class="img-fluid" src="{{ asset('frontend/img/Corn.png')}}" alt="">
+                            </a>
                             <ul class="featureIcons">
                                 <li><a href="#">
                                         <iconify-icon icon="simple-line-icons:heart"></iconify-icon>
@@ -637,7 +658,9 @@ Homepage
                             </ul>
                         </div>
                         <div class="featureCnt">
-                            <a href="#">Corn</a>
+                            <a href="{{ route('frontend.product.details', $product->id) }}">
+                                {{ $product->title }}
+                            </a>
                             <p>$14.99</p>
                             <div class="stars">
                                 <iconify-icon icon="material-symbols-light:star"></iconify-icon>
@@ -655,7 +678,9 @@ Homepage
                 <div class="swiper-slide">
                     <div class="featureCard">
                         <div class="featureImg">
-                            <a href="#"><img class="img-fluid" src="{{ asset('frontend/img/AppleBig.png')}}" alt=""></a>
+                            <a href="{{ route('frontend.product.details', $product->id) }}">
+                                <img class="img-fluid" src="{{ asset('frontend/img/AppleBig.png')}}" alt="">
+                            </a>
                             <ul class="featureIcons">
                                 <li><a href="#">
                                         <iconify-icon icon="simple-line-icons:heart"></iconify-icon>
@@ -666,7 +691,9 @@ Homepage
                             </ul>
                         </div>
                         <div class="featureCnt">
-                            <a href="#">Green Apple</a>
+                            <a href="{{ route('frontend.product.details', $product->id) }}">
+                                {{ $product->title }}
+                            </a>
                             <p>$14.99</p>
                             <div class="stars">
                                 <iconify-icon icon="material-symbols-light:star"></iconify-icon>

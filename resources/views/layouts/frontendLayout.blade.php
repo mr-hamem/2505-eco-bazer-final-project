@@ -373,6 +373,19 @@
     <script src="{{ asset('frontend/jQuery.countdown-master/jQuery.countdown-master/dist/jquery.countdown.min.js')}}">
     </script>
     <script src="{{ asset('frontend/js/app.js')}}"></script>
+
+
+    <script src="{{ asset('frontend/js/app.js')}}"></script>
+
+<!-- Scroll To Top Button -->
+<button id="scrollTopBtn">
+    ↑
+</button>
+
+
+
+
+
 </body>
 
 </html>

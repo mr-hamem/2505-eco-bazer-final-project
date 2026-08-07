@@ -2,21 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category; // Category মডেল যুক্ত করা হলো
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
 {
-    function home()
+    // Homepage
+    public function home()
     {
-
         $categories = Category::where('status', 1)
             ->withCount('products')
             ->latest()
             ->get();
 
-        $products = Product::select('id','title', 'price', 'selling_price', 'image', 'featured', 'status')->latest()->take(30)->get();
+        $products = Product::where('status', 1)
+            ->latest()
+            ->take(30)
+            ->get();
+
         return view('frontend.home', compact('categories', 'products'));
+    }
+
+    // Product Details
+    public function productDetails($id)
+    {
+        $product = Product::with('category')
+            ->where('status', 1)
+            ->findOrFail($id);
+
+        $relatedProducts = Product::where('category_id', $product->category_id)
+            ->where('id', '!=', $product->id)
+            ->where('status', 1)
+            ->latest()
+            ->take(8)
+            ->get();
+
+        return view('frontend.product-details', compact('product', 'relatedProducts'));
     }
 }

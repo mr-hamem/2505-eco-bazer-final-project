@@ -19,6 +19,10 @@ Route::get('/contact', [contactController::class, 'contact'])->name('frontend.co
 Route::get('/about', [aboutController::class, 'about'])->name('frontend.about');
 Route::get('/blog', [BlogController::class, 'blog'])->name('frontend.blog');
 Route::get('/pages', [PagesController::class, 'error'])->name('frontend.error-page');
+
+
+Route::get('/product/{id}', [HomepageController::class, 'productDetails'])
+    ->name('frontend.product.details');
   
 
 // Admin Login Routes

@@ -2377,8 +2377,21 @@ z-index: 2;
 
 
 
+.searchResult{
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 100%;
+    top: 100%;
+    display: none;
+}
 
 
+.searchResult a{
+    color: black;
+    display: block;
+    padding: 5px 10px;
+}
 
 
 

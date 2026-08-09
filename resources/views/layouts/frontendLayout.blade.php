@@ -46,14 +46,19 @@
             <div class="container d-none d-lg-block">
                 <div class="row align-items-center">
                     <div class="col-lg-3">
-                        <a href="{{ route('frontend.index') }}"><img src="{{ asset('frontend/img/Logo.png')}}" alt=""></a>
+                        <a href="{{ route('frontend.index') }}"><img src="{{ asset('frontend/img/Logo.png')}}"
+                                alt=""></a>
                     </div>
-                    <div class="col-lg-6 m-auto">
-                        <form>
-                            <input type="search" placeholder="Search">
+                    <div class="col-lg-6 m-auto ">
+                        <form action="{{ route('frontend.shop') }}" method="GET" class="position-relative">
+                            <input type="search" placeholder="Search" name="search" id="search">
                             <iconify-icon icon="teenyicons:search-outline" width="15" height="15" style="color: #000">
                             </iconify-icon>
                             <button class="btnsearch">Search</button>
+                            <ul class="searchResult ">
+                                {{-- <li><a href="#">Green Apple</a></li>
+                                <li><a href="#">Green Cabage</a></li> --}}
+                            </ul>
                         </form>
                     </div>
                     <div class="col-lg-3 d-flex justify-content-end">
@@ -90,7 +95,7 @@
                                 <a href="{{ route('frontend.blog') }}">Blog</a>
                             </li>
                             <li>
-                                <a href="{{ route('frontend.about') }}"href="#">About Us</a>
+                                <a href="{{ route('frontend.about') }}" href="#">About Us</a>
                             </li>
                             <li>
                                 <a href="{{ route('frontend.contact') }}">Contact Us</a>
@@ -365,6 +370,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Scroll To Top Button -->
+    <button id="scrollTopBtn">
+        ↑
+    </button>
+
+
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
@@ -377,10 +390,62 @@
 
     <script src="{{ asset('frontend/js/app.js')}}"></script>
 
-<!-- Scroll To Top Button -->
-<button id="scrollTopBtn">
-    ↑
-</button>
+    <script>
+        // live search
+      $(function(){
+        
+        $('#search').keyup(function(){
+            let value = $(this).val()
+            let debounce;
+
+            if(value.length <= 3){
+                $('.searchResult').hide()
+                clearTimeout(debounce)
+                return ;
+            }
+
+            debounce =  setTimeout(() => {
+                $('.searchResult').slideDown()
+                // Ajax
+                $.ajax({
+                    url:`{{ route('frontend.search') }}`,
+                    method: `GET`,
+                    data: {
+                        search: value,
+                    },
+                    success: function(res){
+                       let data = res.data
+                       console.log(data.length)
+                       if(data.length == 0){
+                            $('.searchResult').html("<li>No Products Found!</li>")
+                            return;
+                       }
+                        let liArray = []
+                       data.forEach(product => {
+                        let url = `{{ route('frontend.product.details', '__id__') }}`
+                        url = url.replace('__id__', product.id)
+
+                         let li = `<li><a href="${url}">${product.title}</a></li>`;
+                        liArray.push(li)
+                       })
+                       
+                       $('.searchResult').html(liArray)
+
+                    },
+                    error: function(err){
+                    console.log(err)
+                    },
+                })
+
+            }, 300);
+            
+        })
+        
+        
+        
+        
+        })
+    </script>
 
 
 

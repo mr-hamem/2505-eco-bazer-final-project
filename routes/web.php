@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomepageController::class, 'home'])->name('frontend.index');
 Route::get('/shop', [ShopController::class, 'shop'])->name('frontend.shop');  
+Route::get('/live-search', [ShopController::class, 'liveSearch'])->name('frontend.search');  
 
 
 Route::get('/contact', [contactController::class, 'contact'])->name('frontend.contact');

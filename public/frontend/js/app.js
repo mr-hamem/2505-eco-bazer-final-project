@@ -366,15 +366,212 @@ $(document).ready(function() {
     });
   });
  
-  // Wishlist toggle
-  const wishlistBtn = document.querySelector('.wishlist-btn');
-  wishlistBtn.addEventListener('click', () => {
-    const icon = wishlistBtn.querySelector('iconify-icon');
-    if (icon.getAttribute('icon') === 'ph:heart-bold') {
-      icon.setAttribute('icon', 'ph:heart-fill');
-      wishlistBtn.style.background = '#fff0ef';
-    } else {
-      icon.setAttribute('icon', 'ph:heart-bold');
-      wishlistBtn.style.background = '#fff';
+  
+
+  // soria dilam
+
+
+/* -------------------------------------------------------------------------- */
+/*                             product details js                             */
+
+/*==========================================
+        PRODUCT DETAILS JS
+==========================================*/
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /*==============================
+            QUANTITY BUTTON
+    ==============================*/
+
+    const minusBtn = document.querySelector(".minusBtn");
+    const plusBtn = document.querySelector(".plusBtn");
+    const qtyInput = document.querySelector("#qty");
+
+    if (minusBtn && plusBtn && qtyInput) {
+
+        minusBtn.addEventListener("click", function () {
+
+            let value = parseInt(qtyInput.value);
+
+            if (value > 1) {
+                qtyInput.value = value - 1;
+            }
+
+        });
+
+        plusBtn.addEventListener("click", function () {
+
+            let value = parseInt(qtyInput.value);
+
+            qtyInput.value = value + 1;
+
+        });
+
+        qtyInput.addEventListener("input", function () {
+
+            if (this.value < 1 || this.value === "") {
+                this.value = 1;
+            }
+
+        });
+
     }
-  });
+
+    /*==============================
+        PRODUCT IMAGE CHANGE
+    ==============================*/
+
+    const mainImage = document.getElementById("mainProductImage");
+    const thumbs = document.querySelectorAll(".thumb");
+
+    if (mainImage && thumbs.length > 0) {
+
+        thumbs.forEach(function (thumb) {
+
+            thumb.addEventListener("click", function () {
+
+                mainImage.src = this.src;
+
+                thumbs.forEach(function (img) {
+                    img.classList.remove("active");
+                });
+
+                this.classList.add("active");
+
+            });
+
+        });
+
+    }
+
+    /*==============================
+          IMAGE ZOOM
+    ==============================*/
+
+    if (mainImage) {
+
+        mainImage.addEventListener("mousemove", function () {
+
+            this.style.transform = "scale(1.15)";
+
+        });
+
+        mainImage.addEventListener("mouseleave", function () {
+
+            this.style.transform = "scale(1)";
+
+        });
+
+    }
+
+    /*==============================
+        RELATED PRODUCT SWIPER
+    ==============================*/
+
+    if (document.querySelector(".swiperFeature")) {
+
+        new Swiper(".swiperFeature", {
+
+            slidesPerView: 4,
+
+            spaceBetween: 24,
+
+            loop: true,
+
+            speed: 700,
+
+            autoplay: {
+
+                delay: 3000,
+
+                disableOnInteraction: false,
+
+            },
+
+            navigation: {
+
+                nextEl: ".rightBtn",
+
+                prevEl: ".leftBtn",
+
+            },
+
+            breakpoints: {
+
+                320: {
+
+                    slidesPerView: 1,
+
+                },
+
+                576: {
+
+                    slidesPerView: 2,
+
+                },
+
+                768: {
+
+                    slidesPerView: 2,
+
+                },
+
+                992: {
+
+                    slidesPerView: 3,
+
+                },
+
+                1200: {
+
+                    slidesPerView: 4,
+
+                }
+
+            }
+
+        });
+
+    }
+
+});
+
+
+
+
+
+
+/*====================================
+      SCROLL TO TOP
+=====================================*/
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    if (!scrollTopBtn) return;
+
+    window.addEventListener("scroll", function () {
+
+        if (window.scrollY > 300) {
+            scrollTopBtn.style.display = "flex";
+        } else {
+            scrollTopBtn.style.display = "none";
+        }
+
+    });
+
+    scrollTopBtn.addEventListener("click", function () {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+});
+
+
+/* -------------------------------------------------------------------------- */

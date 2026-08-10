@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SingleProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\InstagramPostController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,3 +49,21 @@ Route::get('/customers', [CustomerController::class, 'show'])->name('customers.s
 //Password Update
 Route::patch('/change-password', [AdminProfileController::class, 'changePassword'])->name('change.password');
 Route::patch('/update-password', [AdminProfileController::class, 'updatePassword'])->name('update.password');
+
+
+//IG Routes
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/admin/instagram', [InstagramPostController::class, 'index'])
+        ->name('admin.instagram.home');
+
+    Route::get('/admin/instagram/create', [InstagramPostController::class, 'create'])
+        ->name('admin.instagram.create');
+
+    Route::post('/admin/instagram', [InstagramPostController::class, 'store'])
+        ->name('admin.instagram.store');
+
+    Route::delete('/admin/instagram/{instagramPost}', [InstagramPostController::class, 'destroy'])
+        ->name('admin.instagram.destroy');
+
+});

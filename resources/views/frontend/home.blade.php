@@ -857,83 +857,69 @@ Homepage
 </section>
 <section id="ig">
     <div class="container">
+
         <div class="heading">
             <h4>Follow Us On Instagram</h4>
         </div>
+
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-6 mb-3 mb-lg-0">
-                <div class="igImage">
-                    <img src="{{ asset('frontend/img/ig1.png')}}" class="img-fluid" alt="">
-                    <div class="overlayIg">
-                        <div class="overlayIgInfo">
-                            <a href="#">
-                                <iconify-icon icon="qlementine-icons:instagram-16"></iconify-icon>
-                            </a>
+
+            @forelse($instagramPosts as $post)
+
+                <div class="col-lg-2 col-md-2 col-6 mb-3 mb-lg-0">
+
+                    <div class="igImage">
+
+                        {{-- Instagram Post Image --}}
+                        @if($post->image_url)
+                            <img
+                                src="{{ $post->image_url }}"
+                                class="img-fluid"
+                                alt="Instagram Post"
+                            >
+                        @else
+                            <img
+                                src="{{ asset('frontend/img/ig1.png') }}"
+                                class="img-fluid"
+                                alt="Instagram Post"
+                            >
+                        @endif
+
+
+                        {{-- Hover Overlay --}}
+                        <div class="overlayIg">
+
+                            <div class="overlayIgInfo">
+
+                                <a
+                                    href="{{ $post->instagram_url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <iconify-icon
+                                        icon="qlementine-icons:instagram-16"
+                                    ></iconify-icon>
+                                </a>
+
+                            </div>
+
                         </div>
+
                     </div>
+
                 </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-6 mb-3 mb-lg-0">
-                <div class="igImage">
-                    <img src="{{ asset('frontend/img/ig2.png')}}" class="img-fluid" alt="">
-                    <div class="overlayIg">
-                        <div class="overlayIgInfo">
-                            <a href="#">
-                                <iconify-icon icon="qlementine-icons:instagram-16"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
+
+            @empty
+
+                {{-- No Instagram posts --}}
+                <div class="col-12 text-center">
+                    <p>No Instagram posts available.</p>
                 </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-6 mb-3 mb-lg-0">
-                <div class="igImage">
-                    <img src="{{ asset('frontend/img/ig3.png')}}" class="img-fluid" alt="">
-                    <div class="overlayIg">
-                        <div class="overlayIgInfo">
-                            <a href="#">
-                                <iconify-icon icon="qlementine-icons:instagram-16"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-6 mb-3 mb-lg-0">
-                <div class="igImage">
-                    <img src="{{ asset('frontend/img/ig4.png')}}" class="img-fluid" alt="">
-                    <div class="overlayIg">
-                        <div class="overlayIgInfo">
-                            <a href="#">
-                                <iconify-icon icon="qlementine-icons:instagram-16"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-6 mb-3 mb-lg-0">
-                <div class="igImage">
-                    <img src="{{ asset('frontend/img/ig5.png')}}" class="img-fluid" alt="">
-                    <div class="overlayIg">
-                        <div class="overlayIgInfo">
-                            <a href="#">
-                                <iconify-icon icon="qlementine-icons:instagram-16"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-6 mb-3 mb-lg-0">
-                <div class="igImage">
-                    <img src="{{ asset('frontend/img/ig6.png')}}" class="img-fluid" alt="">
-                    <div class="overlayIg">
-                        <div class="overlayIgInfo">
-                            <a href="#">
-                                <iconify-icon icon="qlementine-icons:instagram-16"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            @endforelse
+
         </div>
+
     </div>
 </section>
 <section id="newsletter">

@@ -30,4 +30,8 @@ Route::get('/product/{id}', [HomepageController::class, 'productDetails'])
 Auth::routes();
 
 
+// Admin Routes
+require __DIR__ . '/admin.php';
+
+
 

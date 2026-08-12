@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\InstagramPost;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,11 @@ class HomepageController extends Controller
             ->take(30)
             ->get();
 
-        return view('frontend.home', compact('categories', 'products'));
+        $instagramPosts = InstagramPost::where('is_active', true)
+            ->orderBy('sort_order')
+            ->get();
+
+        return view('frontend.home', compact('categories', 'products', 'instagramPosts'));
     }
 
     // Product Details

@@ -12,6 +12,8 @@ Route::post('/sign-up',[CustomerAuthController::class, 'register'])->name('custo
 Route::get('/google/login',[CustomerAuthController::class, 'googleLogin'])->name('customer.google');
 Route::get('/google/redirect',[CustomerAuthController::class, 'googleRedirect'])->name('customer.google.redirect');
 
+Route::get('/github/login',[CustomerAuthController::class, 'githubLogin'])->name('customer.github');
+Route::get(' ',[CustomerAuthController::class, 'githubRedirect'])->name('customer.github.redirect');
 
 // User Dashboard
 Route::get('/customer/dashboard',  function(){

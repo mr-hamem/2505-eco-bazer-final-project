@@ -74,4 +74,12 @@ class CustomerAuthController extends Controller
         $user = Socialite::driver('google')->stateless()->user();
         dd($user);
     }
+
+
+    function githubLogin(){
+        return Socialite::driver('github')->redirect();
+    }
+    function githubRedirect(){
+        $user = Socialite::driver('github')->stateless()->user();
+    }
 }

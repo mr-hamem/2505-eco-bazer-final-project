@@ -29,7 +29,9 @@
                     <a href="{{ route('customer.google') }}">
                         <img src="https://i.sstatic.net/4LSMF.png" alt="" class="img-fluid">
                     </a>
-
+                    <a href="{{route('customer.github')}}">
+                        <img src="https://cdn.sanity.io/images/061o94fn/production/4e3e8e3c202274f605ddace0cc0b9841baf0efc5-698x264.jpg" alt="Github Login" class="img-fluid">
+                    </a>
                     <p class="login-text text-center"><a href="{{ route('customer.signup') }}">
                             Don’t have account? <b> Register </b></a>
                     </p>

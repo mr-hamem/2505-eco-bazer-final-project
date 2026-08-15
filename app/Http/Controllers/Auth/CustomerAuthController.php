@@ -72,7 +72,6 @@ class CustomerAuthController extends Controller
 
     function googleRedirect() {
         $user = Socialite::driver('google')->stateless()->user();
-        dd($user);
     }
 
 
@@ -80,6 +79,7 @@ class CustomerAuthController extends Controller
         return Socialite::driver('github')->redirect();
     }
     function githubRedirect(){
-        $user = Socialite::driver('github')->stateless()->user();
+        $user = Socialite::driver('github')()->user();
+        dd($user);
     }
 }

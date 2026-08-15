@@ -19,7 +19,11 @@ return new class extends Migration
             $table->string('details')->nullable();
             $table->boolean('featured')->default(false);
             $table->boolean('status')->default(true);
+<<<<<<< HEAD
             $table->softDeletes(); // <--- এই লাইনটি এখানে যুক্ত করুন
+=======
+            $table->softDeletes();
+>>>>>>> 6d258fbfbb161f15e0e82e639949ed6995aa8310
             $table->timestamps();
         });
     }

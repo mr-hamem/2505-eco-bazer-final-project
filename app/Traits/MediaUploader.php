@@ -16,10 +16,10 @@ trait MediaUploader
 
     private function singleImageUpload($image, $dir = 'others', $visibility = 'public')
     {
-        // Image upload
         if ($image) {
-            // *Server save
-            return  $image->store($dir, $visibility);
+            $filename = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('uploads/' . $dir), $filename);
+            return 'uploads/' . $dir . '/' . $filename;
         }
 
         return null;
@@ -31,7 +31,9 @@ trait MediaUploader
         $imagesUrl = [];
         if (count($images) > 0) {
             foreach ($images as $img) {
-                $imagesUrl[] =  $img->store('products', 'public');
+                $filename = time() . '_' . $img->getClientOriginalName();
+                $img->move(public_path('uploads/' . $dir), $filename);
+                $imagesUrl[] = 'uploads/' . $dir . '/' . $filename;
             }
         }
 

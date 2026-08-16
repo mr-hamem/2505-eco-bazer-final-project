@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('origin')->nullable();
             $table->string('sku')->nullable();
             $table->date('expiry_date')->nullable();
-            $table->enum('units', ['KG', 'PEICE', 'GRAM', 'LITRE'])->default('GRAM');
+            $table->enum('units', ['KG', 'PEICE', 'GRAM', 'LITRE', 'DOZEN', 'LITER'])->default('GRAM');
             $table->boolean('featured')->default(false);
             $table->boolean('status')->default(true);
             $table->softDeletes();

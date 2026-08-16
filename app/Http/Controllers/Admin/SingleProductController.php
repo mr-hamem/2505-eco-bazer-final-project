@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class SingleProductController extends Controller
 {
@@ -25,9 +25,9 @@ class SingleProductController extends Controller
             : $product->gall_images;
 
         if (is_array($galleryImages) && in_array($imageToRemove, $galleryImages)) {
-            // ১. Storage ফোল্ডার থেকে ফাইলটি মুছে ফেলা
-            if (Storage::disk('public')->exists($imageToRemove)) {
-                Storage::disk('public')->delete($imageToRemove);
+            // ১. Public ফোল্ডার থেকে ফাইলটি মুছে ফেলা
+            if (File::exists(public_path($imageToRemove))) {
+                File::delete(public_path($imageToRemove));
             }
 
             // ২. Array থেকে নির্দিষ্ট ইমেজের পাথটি বাদ দেওয়া

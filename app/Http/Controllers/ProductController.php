@@ -9,7 +9,7 @@ use App\Models\Product;
 use App\Traits\MediaUploader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -112,7 +112,7 @@ class ProductController extends Controller
             ]);
         }
 
-        Storage::disk('public')->delete($image);
+        File::delete(public_path($image));
 
         return back()->with('success', 'Image removed successfully.');
     }

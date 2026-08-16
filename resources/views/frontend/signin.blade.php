@@ -8,7 +8,7 @@
             <div class="login-box">
                 <h2>Sign In</h2>
 
-                <form action="{{ route('customer.signin.complete') }}" method="POST">
+                <form action="{{ route('customer.signin') }}" method="POST">
                     @csrf
                     <div class="input-group">
                         <input type="email" placeholder="Email" name="email">
@@ -29,12 +29,12 @@
                     <a href="{{ route('customer.google') }}">
                         <img src="https://i.sstatic.net/4LSMF.png" alt="" class="img-fluid">
                     </a>
-                    <a href="{{route('customer.github')}}">
+                    <a href="">
                         <img src="https://cdn.sanity.io/images/061o94fn/production/4e3e8e3c202274f605ddace0cc0b9841baf0efc5-698x264.jpg" alt="Github Login" class="img-fluid">
                     </a>
                     <p class="login-text text-center"><a href="{{ route('customer.signup') }}">
                             Don’t have account? <b> Register </b></a>
-                    </p>
+                    </p>    
                 </form>
             </div>
         </div>

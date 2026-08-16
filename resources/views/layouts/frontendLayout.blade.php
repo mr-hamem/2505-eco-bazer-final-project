@@ -36,7 +36,8 @@
                                 <option>USD</option>
                                 <option>BDT</option>
                             </select>
-                            <a href="./signin.html">Sign In / Sign Up</a>
+                            <a href="{{ route('customer.signin') }}">Sign In</a>
+                            <a href="{{ route('customer.signup') }}">Sign Up</a>
                         </form>
                     </div>
                 </div>

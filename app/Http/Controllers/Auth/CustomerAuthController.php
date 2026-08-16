@@ -82,4 +82,12 @@ class CustomerAuthController extends Controller
         $user = Socialite::driver('github')()->user();
         dd($user);
     }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('customer')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('customer.signin');
+    }
 }

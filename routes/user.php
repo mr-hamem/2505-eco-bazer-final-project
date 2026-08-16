@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\CustomerAuthController;
+use App\Http\Controllers\CustomerDashboardController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,10 +13,16 @@ Route::post('/sign-up',[CustomerAuthController::class, 'register'])->name('custo
 Route::get('/google/login',[CustomerAuthController::class, 'googleLogin'])->name('customer.google');
 Route::get('/google/redirect',[CustomerAuthController::class, 'googleRedirect'])->name('customer.google.redirect');
 
-Route::get('/github/login',[CustomerAuthController::class, 'githubLogin'])->name('customer.github');
 Route::get(' ',[CustomerAuthController::class, 'githubRedirect'])->name('customer.github.redirect');
 
-// User Dashboard
-Route::get('/customer/dashboard',  function(){
-    echo "Welcome to our dashboard " . auth('customer')->user()->name;
+// Customer Dashboard Routes
+Route::middleware(['auth:customer'])->prefix('customer')->name('customer.')->group(function () {
+    Route::get('/dashboard', [CustomerDashboardController::class, 'dashboard'])->name('dashboard');
+    Route::post('/logout', [CustomerAuthController::class, 'logout'])->name('logout');
+
+    Route::get('/profile', [CustomerDashboardController::class, 'profile'])->name('profile');
+    Route::get('/settings', [CustomerDashboardController::class, 'settings'])->name('settings');
+    Route::get('/orders', [CustomerDashboardController::class, 'orders'])->name('orders');
+    Route::get('/wishlist', [CustomerDashboardController::class, 'wishlist'])->name('wishlist');
+    Route::get('/addresses', [CustomerDashboardController::class, 'addresses'])->name('addresses');
 });

@@ -10,6 +10,8 @@ class CustomerDashboardController extends Controller
 {
     function dashboard() {
         $customer = auth('customer')->user();
+        // dd(auth('customer')->user(), auth()->user());
+        
         $totalProducts = Product::count();
         $totalCategories = Category::count();
         $featuredProducts = Product::where('featured', 1)->where('status', 1)->take(8)->get();

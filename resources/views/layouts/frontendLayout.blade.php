@@ -68,7 +68,7 @@
                         </a>
                         <a href="#" class="iconsCart">
                             <iconify-icon icon="clarity:shopping-bag-line"></iconify-icon>
-                            <p>2</p>
+                            <p>{{ $cartQty }}</p>
                         </a>
                         <div class="price">
                             <p>Shopping cart:</p>

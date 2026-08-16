@@ -22,6 +22,10 @@ Route::get('/blog', [BlogController::class, 'blog'])->name('frontend.blog');
 Route::get('/pages', [PagesController::class, 'error'])->name('frontend.error-page');
 
 
+// Add to Cart
+Route::get('/cart/{id}', [ShopController::class,'addToCart'])->name('product.cart')->middleware('cus');
+
+
 Route::get('/product/{id}', [HomepageController::class, 'productDetails'])
     ->name('frontend.product.details');
   

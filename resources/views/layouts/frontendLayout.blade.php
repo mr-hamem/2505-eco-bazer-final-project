@@ -72,7 +72,7 @@
                         </a>
                         <div class="price">
                             <p>Shopping cart:</p>
-                            <h6>$57.00</h6>
+                            <h6>${{ number_format($cartPrice, 2) }}</h6>
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,7 @@ Shop
 <section id="filter" class="d-none d-lg-flex justify-content-center mb-3">
     <form action="">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items- justify-content-between w-100">
                 <!-- Left Filters: Category, Price, Rating -->
                 <div class="leftFilter col-lg-6 d-flex gap-2">
                     <div class="w-100">

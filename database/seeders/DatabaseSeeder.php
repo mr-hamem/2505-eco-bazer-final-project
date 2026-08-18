@@ -44,19 +44,9 @@ class DatabaseSeeder extends Seeder
             User::create($user);
         }
 
-<<<<<<< HEAD
-
-        
-        $this->call([
-                CategorySeeder::class,
-        ]);
-        $this->call([
-                ProductSeeder::class,
-=======
         $this->call([
             CategorySeeder::class,
             ProductSeeder::class,
->>>>>>> 6d258fbfbb161f15e0e82e639949ed6995aa8310
         ]);
     }
 }

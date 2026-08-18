@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unique();
             $table->string('title');
             $table->string('slug')->unique();
             $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('origin')->nullable();
             $table->string('sku')->nullable();
             $table->date('expiry_date')->nullable();
-            $table->enum('units', ['KG', 'PEICE', 'GRAM', 'LITRE'])->default('GRAM');
+            $table->enum('units', ['KG', 'PEICE', 'GRAM', 'LITRE', 'DOZEN', 'LITER'])->default('GRAM');
             $table->boolean('featured')->default(false);
             $table->boolean('status')->default(true);
             $table->softDeletes();

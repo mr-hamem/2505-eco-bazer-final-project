@@ -13,8 +13,14 @@ function activeLink($route, $activeClass = 'active')
 
 
 function getImage($image = null){
-    if ($image && \Illuminate\Support\Facades\Storage::disk('public')->exists($image)) {
-        return asset('storage/' . $image);
+    if ($image) {
+        if (str_starts_with($image, 'uploads/')) {
+            if (\Illuminate\Support\Facades\File::exists(public_path($image))) {
+                return asset($image);
+            }
+        } elseif (\Illuminate\Support\Facades\Storage::disk('public')->exists($image)) {
+            return asset('storage/' . $image);
+        }
     }
 
     return asset('placeholder.png');

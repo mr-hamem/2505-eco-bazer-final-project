@@ -11,7 +11,8 @@ class HomepageController extends Controller
 {
     // Homepage
     public function home()
-    {
+    {   
+        
         $categories = Category::where('status', 1)
             ->withCount('products')
             ->latest()

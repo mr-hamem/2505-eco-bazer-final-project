@@ -36,7 +36,8 @@
                                 <option>USD</option>
                                 <option>BDT</option>
                             </select>
-                            <a href="./signin.html">Sign In / Sign Up</a>
+                            <a href="{{ route('customer.signin') }}">Sign In</a>
+                            <a href="{{ route('customer.signup') }}">Sign Up</a>
                         </form>
                     </div>
                 </div>
@@ -67,7 +68,7 @@
                         </a>
                         <a href="#" class="iconsCart">
                             <iconify-icon icon="clarity:shopping-bag-line"></iconify-icon>
-                            <p>2</p>
+                            <p>{{ $cartQty }}</p>
                         </a>
                         <div class="price">
                             <p>Shopping cart:</p>

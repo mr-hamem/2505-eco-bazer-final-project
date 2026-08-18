@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -65,21 +66,46 @@ class CustomerAuthController extends Controller
     }
 
 
-    function googleLogin() {
+    function googleLogin()
+    {
         return Socialite::driver('google')->redirect();
     }
 
 
-    function googleRedirect() {
-        $user = Socialite::driver('google')->stateless()->user();
+    function googleRedirect()
+    {
+        $user = Socialite::driver('google')->user();
+
+        $user = Customer::updateOrCreate([
+            "email" => $user->email
+        ], [
+            'name' => $user->name,
+            "email" => $user->email,
+            "password" => Hash::make(uniqid()),
+        ]);
+
+        Auth::guard('customer')->login($user);
+        
+        
+        return to_route('customer.dashboard');
     }
 
 
-    function githubLogin(){
+    function githubLogin()
+    {
         return Socialite::driver('github')->redirect();
     }
-    function githubRedirect(){
-        $user = Socialite::driver('github')()->user();
+    function githubRedirect()
+    {
+        $user = Socialite::driver('github')->user();
         dd($user);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('customer')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('customer.signin');
     }
 }

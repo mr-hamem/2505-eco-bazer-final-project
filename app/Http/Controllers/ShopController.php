@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -51,5 +52,24 @@ class ShopController extends Controller
                     'error' => $th->getMessage()
                ]);
           }
+     }
+
+
+     function addToCart($id)
+     {
+          $customerId = auth('customer')->id();
+          if (Cart::where('customer_id', $customerId)->where('product_id', $id)->exists()) {
+               // qty  += 1
+              $cart = Cart::where('customer_id', $customerId)->where('product_id', $id)->increment('qty', 1);
+          } else {
+               $cart = Cart::create(
+                    [
+                         'customer_id' => auth('customer')->id(),
+                         'product_id' => $id,
+                         'qty' => 1,
+                    ]
+               );
+          }
+          return back();
      }
 }

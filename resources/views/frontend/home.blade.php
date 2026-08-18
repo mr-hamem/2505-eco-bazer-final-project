@@ -152,7 +152,7 @@ Homepage
                                 <iconify-icon icon="material-symbols-light:star"></iconify-icon>
                                 <iconify-icon icon="material-symbols-light:star"></iconify-icon>
                             </div>
-                            <a href="#" class="cartBtn">
+                            <a href="{{ route('product.cart', $product->id) }}" class="cartBtn">
                                 <iconify-icon icon="clarity:shopping-bag-line"></iconify-icon>
                             </a>
                         </div>

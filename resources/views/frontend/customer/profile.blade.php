@@ -1,9 +1,8 @@
-@extends('layouts.customerLayout')
-
-@section('title', 'My Profile')
-
+@extends('layouts.frontendLayout')
+@section('title')
+My Profile
+@endsection
 @section('content')
-<!-- Content -->
 <div class="container-xxl grow container-p-y">
     <div class="row">
         <div class="col-xl-4 col-lg-5 col-md-5 order-1">

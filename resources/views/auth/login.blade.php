@@ -33,16 +33,18 @@ Admin Login
                     <a href="#" class="forgetPass text-end">Forget Password</a>
 
                     <button 
-    type="submit" 
-    class="login-btn" 
-    style="background-color: #910dfd; color: #ffffff; transition: background-color 0.3s ease;" 
-    onmouseover="this.style.backgroundColor='#7009c9'" 
-    onmouseout="this.style.backgroundColor='#910dfd'">
-    Login
-</button>
+                       type="submit" 
+                       class="login-btn" 
+                       style="background-color: #910dfd; color: #ffffff; transition: background-color 0.3s ease;" 
+                       onmouseover="this.style.backgroundColor='#7009c9'" 
+                       onmouseout="this.style.backgroundColor='#910dfd'">
+                       Login
+                    </button>
 
-                    <p class="login-text text-center"><a href="./signup.html">
-                            Don’t have account? <b> Register </b></a>
+                    <p class="login-text text-center">
+                        <a href="javascript:void(0);" onclick="alert('You are not authorized to register for admin.');">
+                            Don’t have account? <b> Register </b>
+                        </a>
                     </p>
                 </form>
             </div>

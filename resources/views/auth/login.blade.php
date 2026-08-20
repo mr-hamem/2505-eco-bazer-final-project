@@ -1,6 +1,6 @@
 @extends('layouts.frontendLayout')
 @section('title')
-Login
+Admin Login
 @endsection
 @section('content')
 
@@ -8,7 +8,7 @@ Login
     <div class="container">
         <div class="row align-itme-center justify-content-center">
             <div class="login-box">
-                <h2>Sign In</h2>
+                <h2>Admin Login</h2>
 
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
@@ -32,10 +32,19 @@ Login
                     </label>
                     <a href="#" class="forgetPass text-end">Forget Password</a>
 
-                    <button type="submit" class="login-btn">Login</button>
+                    <button 
+                       type="submit" 
+                       class="login-btn" 
+                       style="background-color: #910dfd; color: #ffffff; transition: background-color 0.3s ease;" 
+                       onmouseover="this.style.backgroundColor='#7009c9'" 
+                       onmouseout="this.style.backgroundColor='#910dfd'">
+                       Login
+                    </button>
 
-                    <p class="login-text text-center"><a href="./signup.html">
-                            Don’t have account? <b> Register </b></a>
+                    <p class="login-text text-center">
+                        <a href="javascript:void(0);" onclick="alert('You are not authorized to register for admin.');">
+                            Don’t have account? <b> Register </b>
+                        </a>
                     </p>
                 </form>
             </div>

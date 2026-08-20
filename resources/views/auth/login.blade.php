@@ -1,6 +1,6 @@
 @extends('layouts.frontendLayout')
 @section('title')
-Login
+Admin Login
 @endsection
 @section('content')
 
@@ -8,7 +8,7 @@ Login
     <div class="container">
         <div class="row align-itme-center justify-content-center">
             <div class="login-box">
-                <h2>Sign In</h2>
+                <h2>Admin Login</h2>
 
                 <form action="{{ route('login') }}" method="POST">
                     @csrf

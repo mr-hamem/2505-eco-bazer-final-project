@@ -22,12 +22,12 @@ Sign Up
                             <input type="email" placeholder="Email" name="email">
                         </div>
 
-                        <div class="input-group password-box">
+                        <div class="input-group password-group">
                             <input type="password" placeholder="Password" name="password">
                             <iconify-icon class="eye" icon="iconoir:eye" width="24" height="24"></iconify-icon>
                         </div>
 
-                        <div class="input-group password-box">
+                        <div class="input-group password-group">
                             <input type="password" placeholder="Confirm Password" name="password_confirmation">
                             <iconify-icon class="eye" icon="iconoir:eye" width="24" height="24"></iconify-icon>
                         </div>
@@ -49,4 +49,23 @@ Sign Up
         </div>
     </div>
 </section>
+
+<!-- jQuery Password Toggle Script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.password-group .eye').on('click', function () {
+            const $icon = $(this);
+            const $input = $icon.siblings('input');
+            const isPassword = $input.attr('type') === 'password';
+
+            // Toggle input type between password and text
+            $input.attr('type', isPassword ? 'text' : 'password');
+
+            // Swap Iconify icon state
+            $icon.attr('icon', isPassword ? 'iconoir:eye-closed' : 'iconoir:eye');
+        });
+    });
+</script>
+
 @endsection

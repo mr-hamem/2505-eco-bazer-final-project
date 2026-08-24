@@ -51,4 +51,23 @@ Admin Login
         </div>
     </div>
 </section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.password-group .eye').on('click', function () {
+            const $icon = $(this);
+            const $input = $icon.siblings('input');
+            const isPassword = $input.attr('type') === 'password';
+
+            // Toggle input type between password and text
+            $input.attr('type', isPassword ? 'text' : 'password');
+
+            // Swap Iconify icon state
+            $icon.attr('icon', isPassword ? 'iconoir:eye-closed' : 'iconoir:eye');
+        });
+    });
+</script>
+
+
 @endsection

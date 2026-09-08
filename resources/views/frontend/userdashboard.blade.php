@@ -67,7 +67,7 @@ Dashboard
                 <div class="col-md-5 mb-4">
                     <div class="card h-100">
                         <div class="card-body text-center">
-                            <img src="{{ $customer->image ? getImage($customer->image) : asset('frontend/img/user.png') }}"
+                            <img src="{{ $customer->getImage($customer->image) : asset('frontend/img/placeholder.png') }}"
                                  alt="{{ $customer->name }}"
                                  class="rounded-circle mb-3"
                                  style="width: 90px; height: 90px; object-fit: cover;" />

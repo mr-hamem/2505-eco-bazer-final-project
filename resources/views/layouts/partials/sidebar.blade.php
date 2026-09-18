@@ -19,6 +19,12 @@
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
+        <li class="menu-item {{ activeLink('admin.contact-messages.*')  }}">
+            <a href="{{ route('admin.contact-messages.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-envelope"></i>
+                <div data-i18n="Contact Messages">Contact Messages</div>
+            </a>
+        </li>
         <li class="menu-item {{ activeLink('admin.category.index')  }}">
             <a href="{{ route('admin.category.index') }}" class="menu-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

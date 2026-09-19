@@ -437,6 +437,58 @@
 
 
 
+      $(function(){
+        
+        $('#search').keyup(function(){
+            let value = $(this).val()
+            let debounce;
+
+            if(value.length <= 3){
+                $('.searchResult').hide()
+                clearTimeout(debounce)
+                return ;
+            }
+
+            debounce =  setTimeout(() => {
+                $('.searchResult').slideDown(1000)
+                // Ajax
+                $.ajax({
+                    url:`{{ route('frontend.search') }}`,
+                    method: `GET`,
+                    data: {
+                        search: value,
+                    },
+                    success: function(res){
+                       let data = res.data
+                       console.log(data.length)
+                       if(data.length == 0){
+                            $('.searchResult').html("<li>No Products Found!</li>")
+                            return;
+                       }
+                        let liArray = []
+                       data.forEach(product => {
+                        let url = `{{ route('frontend.product.details', '__id__') }}`
+                        url = url.replace('__id__', product.id)
+
+                         let li = `<li><a href="${url}">${product.title}</a></li>`;
+                        liArray.push(li)
+                       })
+                       
+                       $('.searchResult').html(liArray)
+
+                    },
+                    error: function(err){
+                    console.log(err)
+                    },
+                })
+
+            }, 300);
+            
+        })
+        
+        
+        
+        
         })
     </script>
 

@@ -18,6 +18,7 @@ Route::get('/live-search', [ShopController::class, 'liveSearch'])->name('fronten
 
 
 Route::get('/contact', [contactController::class, 'contact'])->name('frontend.contact');
+Route::post('/contact', [contactController::class, 'send'])->name('frontend.contact.send');
 Route::get('/about', [aboutController::class, 'about'])->name('frontend.about');
 Route::get('/blog', [BlogController::class, 'blog'])->name('frontend.blog');
 Route::get('/pages', [PagesController::class, 'error'])->name('frontend.error-page');

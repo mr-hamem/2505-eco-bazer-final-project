@@ -11,11 +11,9 @@
         <div class="d-flex align-items-end row">
           <div class="col-sm-7">
             <div class="card-body">
-              <h5 class="card-title text-primary">Congratulations {{ str()->headline(auth()->user()->name) }}! 🎉</h5>
-              <p class="mb-4" style="color: #96b297;">
-                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                your profile.
-              </p>
+              <h5 class="card-title text-primary">
+    Congratulations {{ str()->headline(auth()->user()?->name ?? 'Guest') }}! 🎉
+</h5>
 
               <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
             </div>

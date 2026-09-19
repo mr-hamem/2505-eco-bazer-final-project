@@ -705,6 +705,46 @@ display: none;
 #relatedProduct .offer {
     font-size: 10px;
 }
+
+.aboutLeft h2{
+    font-size: 26px;
+    line-height: 90%;
+    padding: 0px 25px 20px 0px;
+}
+.aboutLeft p{
+     font-size: 12px;
+}
+.aboutRight{
+    padding-bottom: 20px;
+}
+.about-img-mobile img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+#aboutOne, #aboutTwo{
+    margin: 0px 0;
+}
+.custom-list {
+        padding-top: 10px;
+    }
+
+    .custom-list li {
+        font-size: 13px; /* অত্যন্ত ছোট স্ক্রিনে ফন্ট ১৩ পিক্সেল */
+        margin-bottom: 10px;
+        align-items: flex-start; /* টেক্সট ২-৩ লাইন হলেও আইকন উপরে সুন্দরভাবে এলাইন থাকবে */
+    }
+
+    .check-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+        margin-right: 6px;
+        margin-top: 2px;
+    }
+    .logo-container {
+    grid-template-columns: repeat(3, 1fr); /* মোবাইলে ৩টি করে ২ সারিতে দেখাবে */
+  }
 }
 
 

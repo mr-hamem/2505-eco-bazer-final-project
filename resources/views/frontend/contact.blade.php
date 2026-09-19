@@ -80,15 +80,27 @@ Contact
                             <p>Do you fancy saying hi to me or you want to get started with your <br> project and you need my help? Feel free to contact me.</p>
                             </div>
                             <div class="row align-item-center">
-                                <form>
-                                    <input class="one col" type="text" placeholder="Template Cookie">
-                                    <input class="one col" type="email" placeholder="zakirsoft@gmail.com">
+                                @if (session('success'))
+                                    <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+                                @endif
+
+                                @if (session('error'))
+                                    <div class="alert alert-danger" role="alert">{{ session('error') }}</div>
+                                @endif
+
+                                @if ($errors->any())
+                                    <div class="alert alert-danger" role="alert">{{ $errors->first() }}</div>
+                                @endif
+
+                                <form action="{{ route('frontend.contact.send') }}" method="POST">
+                                    @csrf
+                                    <input class="one col" type="text" name="name" placeholder="Template Cookie" value="{{ old('name') }}" required>
+                                    <input class="one col" type="email" name="email" placeholder="zakirsoft@gmail.com" value="{{ old('email') }}" required>
+                                    <input id="two" type="text" name="subject" placeholder="Hello" value="{{ old('subject') }}" required>
+                                    <textarea name="message" placeholder="Write your message" required>{{ old('message') }}</textarea>
+                                    <button class="massage" type="submit">Send Message</button>
                                 </form>
                             </div>
-                            <input id="two" type="text" placeholder="Hello">
-                            <textarea placeholder="Subject"></textarea>
-                            <button class="massage"> Send Massage </button>
-                        </div>
                     </div>
                 </div>
             </div>

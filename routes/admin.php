@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SingleProductController;
@@ -39,7 +40,7 @@ Route::prefix('/product')->name('product.')->controller(ProductController::class
     Route::get('/edit/{id}', 'editOrCreate')->name('edit');
     Route::put('/update/{id}', 'update')->name('update');
     Route::delete('/destroy/{id}', 'destroy')->name('destroy');
-    Route::delete('/remove-image/{id}', 'removeImage')->name('remove-image'); // নতুন
+    Route::delete('/remove-image/{id}', 'removeImage')->name('remove-image'); 
 });
 
 
@@ -66,4 +67,10 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admin/instagram/{instagramPost}', [InstagramPostController::class, 'destroy'])
         ->name('admin.instagram.destroy');
 
+});
+// Contact Messages Route
+Route::prefix('/contact-messages')->name('contact-messages.')->controller(ContactMessageController::class)->group(function(){
+    Route::get('/', 'index')->name('index');
+    Route::get('/{contactMessage}', 'show')->name('show');
+    Route::delete('/{contactMessage}', 'destroy')->name('destroy');
 });

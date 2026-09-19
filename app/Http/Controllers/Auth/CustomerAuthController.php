@@ -18,15 +18,21 @@ class CustomerAuthController extends Controller
     use AuthenticatesUsers;
     use RegistersUsers;
 
-    protected $redirectTo = '/customer/dashboard';
+    protected $redirectTo = '/customer/profile';
 
 
     public function showLoginForm()
     {
+        if(auth('customer')->check()) {
+            return to_route('customer.profile');
+        }
         return view('frontend.signin');
     }
     public function showRegisterForm()
     {
+        if(auth('customer')->check()) {
+            return to_route('customer.profile');
+        }
         return view('frontend.signup');
     }
 
@@ -87,7 +93,7 @@ class CustomerAuthController extends Controller
         Auth::guard('customer')->login($user);
         
         
-        return to_route('customer.dashboard');
+        return to_route('customer.profile');
     }
 
 

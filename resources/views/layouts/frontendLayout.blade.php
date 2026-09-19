@@ -57,8 +57,8 @@
                             </iconify-icon>
                             <button class="btnsearch">Search</button>
                             <ul class="searchResult ">
-                                {{-- <li><a href="#">Green Apple</a></li>
-                                <li><a href="#">Green Cabage</a></li> --}}
+                                <!-- <li><a href="#">Green Apple</a></li>
+                                <li><a href="#">Green Cabage</a></li> -->
                             </ul>
                         </form>
                     </div>
@@ -66,10 +66,22 @@
                         <a href="#" class="iconsLove">
                             <iconify-icon icon="simple-line-icons:heart"></iconify-icon>
                         </a>
-                        <a href="#" class="iconsCart">
-                            <iconify-icon icon="clarity:shopping-bag-line"></iconify-icon>
-                            <p>{{ $cartQty }}</p>
-                        </a>
+                        <div class="btncart">
+                            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#desktopCartOffcanvas" aria-controls="desktopCartOffcanvas" class="btn iconsCart">
+                                <iconify-icon icon="clarity:shopping-bag-line"></iconify-icon>
+                                <p>{{ $cartQty }}</p>
+                            </button>
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="desktopCartOffcanvas" aria-labelledby="desktopCartOffcanvasLabel">
+                                <div class="offcanvas-header">
+                                    <h5 class="offcanvas-title" id="desktopCartOffcanvasLabel">Shopping Cart</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    @include('frontend.partials.cart-offcanvas-items')
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="price">
                             <p>Shopping cart:</p>
                             <h6>${{ number_format($cartPrice, 2) }}</h6>
@@ -130,11 +142,11 @@
                             aria-controls="offcanvasTop">
                             <iconify-icon icon="teenyicons:search-outline"></iconify-icon>
                         </a>
-                        <a href="#" class="iconsCart" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <button type="button" class="iconsCart border-0 bg-transparent p-0" data-bs-toggle="offcanvas"
+                            data-bs-target="#mobileCartOffcanvas" aria-controls="mobileCartOffcanvas">
                             <iconify-icon icon="clarity:shopping-bag-line"></iconify-icon>
-                            <p>2</p>
-                        </a>
+                            <p>{{ $cartQty }}</p>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -183,37 +195,17 @@
                 </div>
             </div>
             <div class="mblCartBtn">
-                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight"></button>
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileCartOffcanvas"
+                    aria-controls="mobileCartOffcanvas"></button>
 
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-                    aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileCartOffcanvas"
+                    aria-labelledby="mobileCartOffcanvasLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Purchase item <img
-                                src="{{ asset('frontend/img/plant 1.png')}}" class="img-fluid"></h5>
+                        <h5 class="offcanvas-title" id="mobileCartOffcanvasLabel">Shopping Cart</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <div class="buyItem">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carditem col-5">
-                                        <a href="#">
-                                            <img src="{{ asset('frontend/img/Apple.png')}}" alt="">
-                                            <h5>Green Apple</h5>
-                                            <p>2 Kg <b>15$</b></p>
-                                        </a>
-                                    </div>
-                                    <div class="carditem col-5">
-                                        <a href="#">
-                                            <img src="{{ asset('frontend/img/Malta.png')}}" alt="">
-                                            <h5>Indian Malta</h5>
-                                            <p>2 Kg <b>15$</b></p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @include('frontend.partials.cart-offcanvas-items')
                     </div>
                 </div>
             </div>
@@ -393,58 +385,58 @@
 
     <script>
         // live search
-      $(function(){
-        
-        $('#search').keyup(function(){
-            let value = $(this).val()
-            let debounce;
+        $(function() {
 
-            if(value.length <= 3){
-                $('.searchResult').hide()
-                clearTimeout(debounce)
-                return ;
-            }
+            $('#search').keyup(function() {
+                let value = $(this).val()
+                let debounce;
 
-            debounce =  setTimeout(() => {
-                $('.searchResult').slideDown()
-                // Ajax
-                $.ajax({
-                    url:`{{ route('frontend.search') }}`,
-                    method: `GET`,
-                    data: {
-                        search: value,
-                    },
-                    success: function(res){
-                       let data = res.data
-                       console.log(data.length)
-                       if(data.length == 0){
-                            $('.searchResult').html("<li>No Products Found!</li>")
-                            return;
-                       }
-                        let liArray = []
-                       data.forEach(product => {
-                        let url = `{{ route('frontend.product.details', '__id__') }}`
-                        url = url.replace('__id__', product.id)
+                if (value.length <= 3) {
+                    $('.searchResult').hide()
+                    clearTimeout(debounce)
+                    return;
+                }
 
-                         let li = `<li><a href="${url}">${product.title}</a></li>`;
-                        liArray.push(li)
-                       })
-                       
-                       $('.searchResult').html(liArray)
+                debounce = setTimeout(() => {
+                    $('.searchResult').slideDown()
+                    // Ajax
+                    $.ajax({
+                        url: `{{ route('frontend.search') }}`,
+                        method: `GET`,
+                        data: {
+                            search: value,
+                        },
+                        success: function(res) {
+                            let data = res.data
+                            console.log(data.length)
+                            if (data.length == 0) {
+                                $('.searchResult').html("<li>No Products Found!</li>")
+                                return;
+                            }
+                            let liArray = []
+                            data.forEach(product => {
+                                let url = `{{ route('frontend.product.details', '__id__') }}`
+                                url = url.replace('__id__', product.id)
 
-                    },
-                    error: function(err){
-                    console.log(err)
-                    },
-                })
+                                let li = `<li><a href="${url}">${product.title}</a></li>`;
+                                liArray.push(li)
+                            })
 
-            }, 300);
-            
-        })
-        
-        
-        
-        
+                            $('.searchResult').html(liArray)
+
+                        },
+                        error: function(err) {
+                            console.log(err)
+                        },
+                    })
+
+                }, 300);
+
+            })
+
+
+
+
         })
     </script>
 

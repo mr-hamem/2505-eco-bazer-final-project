@@ -26,6 +26,7 @@ Route::get('/pages', [PagesController::class, 'error'])->name('frontend.error-pa
 // Add to Cart
 Route::get('/cart/{id}', [ShopController::class, 'addToCart'])->name('product.cart')->middleware('cus');
 
+Route::get('/order-summary', [ShopController::class, 'orderSummary'])->name('frontend.order-summary')->middleware('cus');
 
 Route::get('/product/{id}', [HomepageController::class, 'productDetails'])
     ->name('frontend.product.details');

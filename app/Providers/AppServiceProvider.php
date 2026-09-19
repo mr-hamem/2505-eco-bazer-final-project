@@ -23,12 +23,14 @@ class AppServiceProvider extends ServiceProvider
     {
 
         view()->composer('layouts.frontendLayout', function ($view) {
-            $cartQty = Cart::where('customer_id', auth('customer')->id())->sum('qty');
-            $cartPrice = Cart::with('product')->where('customer_id', auth('customer')->id())->get()->sum(fn($cart) => $cart->product->selling_price * $cart->qty);
+            $cartItems = Cart::with('product')->where('customer_id', auth('customer')->id())->get();
+            $cartQty = $cartItems->sum('qty');
+            $cartPrice = $cartItems->sum(fn ($cart) => ($cart->product?->selling_price ?? $cart->product?->price ?? 0) * $cart->qty);
 
             return $view->with([
                 'cartQty' => $cartQty,
                 'cartPrice' => $cartPrice,
+                'cartItems' => $cartItems,
             ]);
         });
     }

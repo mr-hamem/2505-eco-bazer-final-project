@@ -72,4 +72,12 @@ class ShopController extends Controller
           }
           return back();
      }
+
+     public function orderSummary()
+     {
+          $carts = Cart::with('product')->where('customer_id', auth('customer')->id())->get();
+          $deliveryCharge = 0;
+
+          return view('frontend.order-summary', compact('carts', 'deliveryCharge'));
+     }
 }

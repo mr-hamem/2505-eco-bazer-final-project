@@ -234,15 +234,19 @@
                                 @endif
                             </td>
                             <td class="text-end">
-                                <div class="cm-action-cell">
-                                    <a href="{{ route('admin.contact-messages.show', $message) }}" class="cm-action-btn cm-action-view" title="View"><i class="bi bi-eye"></i> View</a>
-                                    <form action="{{ route('admin.contact-messages.destroy', $message) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="cm-action-btn cm-action-delete" title="Delete"
-                                            onclick="return confirm('Are you sure you want to delete this message?')"><i class="bi bi-trash"></i> Delete</button>
-                                    </form>
-                                </div>
+                                    <div class="cm-action-cell">
+                                        <a href="{{ route('admin.contact-messages.show', $message) }}" class="cm-action-btn cm-action-view" title="View"><i class="bi bi-eye"></i> View</a>
+                                        <form action="{{ route('admin.contact-messages.reply', $message) }}" method="POST" style="display:inline;" onsubmit="return confirm('Open reply form?')">
+                                            @csrf
+                                            <button type="submit" class="cm-action-btn cm-action-view" title="Reply" style="background:#EAF0FD;color:#2F6FED;"><i class="bi bi-reply"></i> Reply</button>
+                                        </form>
+                                        <form action="{{ route('admin.contact-messages.destroy', $message) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="cm-action-btn cm-action-delete" title="Delete"
+                                                onclick="return confirm('Are you sure you want to delete this message?')"><i class="bi bi-trash"></i> Delete</button>
+                                        </form>
+                                    </div>
                             </td>
                         </tr>
                     @empty

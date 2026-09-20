@@ -72,5 +72,6 @@ Route::middleware(['auth'])->group(function () {
 Route::prefix('/contact-messages')->name('contact-messages.')->controller(ContactMessageController::class)->group(function(){
     Route::get('/', 'index')->name('index');
     Route::get('/{contactMessage}', 'show')->name('show');
+    Route::post('/{contactMessage}/reply', 'reply')->name('reply');
     Route::delete('/{contactMessage}', 'destroy')->name('destroy');
 });

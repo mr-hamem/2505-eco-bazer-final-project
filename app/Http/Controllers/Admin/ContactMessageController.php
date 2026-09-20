@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactReplyMailable;
 use App\Models\ContactMessage;
+use App\Models\Reply;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactMessageController extends Controller
 {
@@ -42,7 +45,23 @@ class ContactMessageController extends Controller
     {
         $contactMessage->update(['is_read' => true]);
 
-        return back()->with('success', 'Message marked as read.');
+        return view('backend.mymassages.show', compact('contactMessage'));
+    }
+
+    public function reply(Request $request, ContactMessage $contactMessage)
+    {
+        $request->validate([
+            'reply' => 'required|string|min:2|max:5000',
+        ]);
+
+        $reply = Reply::create([
+            'contact_message_id' => $contactMessage->id,
+            'reply' => $request->string('reply'),
+        ]);
+
+        Mail::to($contactMessage->email)->send(new ContactReplyMailable($contactMessage));
+
+        return back()->with('success', 'Reply sent successfully. Customer has been notified via email.');
     }
 
     public function destroy(ContactMessage $contactMessage)

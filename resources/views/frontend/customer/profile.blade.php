@@ -23,7 +23,7 @@ My Profile
                     <h5 class="card-title m-0">Profile Information</h5>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('customer.profile.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row g-4 align-items-start">
                             <div class="col-md-7">
@@ -54,7 +54,7 @@ My Profile
                                 </div>
                             </div>
                             <div class="col-md-5 text-center">
-                                <img src="{{ $customer->image ? getImage($customer->image) : asset('frontend/img/user.png') }}"
+                                <img src="{{ $customer->profile_img ? getImage($customer->profile_img) : asset('frontend/img/user.png') }}"
                                      alt="{{ $customer->name }}"
                                      class="rounded-circle mb-3"
                                      style="width: 140px; height: 140px; object-fit: cover;">

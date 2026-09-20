@@ -21,6 +21,7 @@ Route::middleware('cus')->prefix('customer')->name('customer.')->group(function 
     Route::post('/logout', [CustomerAuthController::class, 'logout'])->name('logout');
 
     Route::get('/profile', [CustomerDashboardController::class, 'profile'])->name('profile');
+    Route::post('/profile/update', [CustomerDashboardController::class, 'updateProfile'])->name('profile.update');
     Route::get('/settings', [CustomerDashboardController::class, 'settings'])->name('settings');
     Route::get('/orders', [CustomerDashboardController::class, 'orders'])->name('orders');
     Route::get('/wishlist', [CustomerDashboardController::class, 'wishlist'])->name('wishlist');

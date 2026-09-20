@@ -10,8 +10,10 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Socialite\Socialite;
+use Throwable;
 
 class CustomerAuthController extends Controller
 {
@@ -72,27 +74,42 @@ class CustomerAuthController extends Controller
     }
 
 
-    function googleLogin()
+    public function googleLogin()
     {
         return Socialite::driver('google')->redirect();
     }
 
 
-    function googleRedirect()
+    public function googleRedirect(Request $request)
     {
-        $user = Socialite::driver('google')->user();
+        try {
+            $googleUser = Socialite::driver('google')->user();
+        } catch (Throwable $exception) {
+            Log::warning('Google customer login failed.', [
+                'message' => $exception->getMessage(),
+            ]);
 
-        $user = Customer::updateOrCreate([
-            "email" => $user->email
-        ], [
-            'name' => $user->name,
-            "email" => $user->email,
-            "password" => Hash::make(uniqid()),
-        ]);
+            return to_route('customer.signin')
+                ->with('error', 'Google sign-in could not be completed. Please try again.');
+        }
 
-        Auth::guard('customer')->login($user);
-        
-        
+        if (blank($googleUser->getEmail())) {
+            return to_route('customer.signin')
+                ->with('error', 'Google did not provide an email address for this account.');
+        }
+
+        $customer = Customer::firstOrCreate(
+            ['email' => $googleUser->getEmail()],
+            [
+                'name' => $googleUser->getName() ?: $googleUser->getNickname() ?: 'Google customer',
+                'email_verified_at' => now(),
+                'password' => Hash::make(str()->random(40)),
+            ]
+        );
+
+        Auth::guard('customer')->login($customer, true);
+        $request->session()->regenerate();
+
         return to_route('customer.profile');
     }
 

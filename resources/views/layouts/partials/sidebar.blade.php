@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="background-color: #ffffff !important; font-family: 'Poppins', 'Inter', sans-serif;">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="{{ route('frontend.index') }}" class="app-brand-link">
             <img src="{{ asset('frontend/img/Logo.png') }}" alt="Ecobazar Logo" style="max-height: 40px;">
         </a>
 
